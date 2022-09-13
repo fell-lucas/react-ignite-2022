@@ -34,6 +34,12 @@
   flex-direction: column;
 }
 
+.taskListContainer {
+  height: 38vh;
+  overflow: auto;
+  padding-right: 5px;
+}
+
 .taskListEmpty {
   display: flex;
   flex-direction: column;
@@ -41,6 +47,12 @@
   gap: 16px;
   padding: 64px 0px;
   border-top: 1px #333333 solid;
+}
+
+@media screen and (min-width: 1400px) {
+  .taskListContainer {
+    height: 55vh;
+  }
 }
 
 .taskListEmpty > div > p {
