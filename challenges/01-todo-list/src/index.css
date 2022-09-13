@@ -26,6 +26,12 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 736px;
-  margin: auto;
+  padding: 0px 20px;
+}
+
+@media screen and (min-width: 776px) {
+  main {
+    width: 736px;
+    margin: auto;
+  }
 }
