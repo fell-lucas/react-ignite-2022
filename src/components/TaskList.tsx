@@ -3,9 +3,12 @@ import { Task } from './Task';
 import ClipboardIcon from '../assets/Clipboard.svg';
 import styles from './TaskList.module.css';
 
-export function TaskList() {
-  const [taskList, setTaskList] = useState([]);
+interface TaskListProps {
+  tasks: string[];
+  handleDeleteTask: (index: number) => void;
+}
 
+export function TaskList({ tasks, handleDeleteTask }: TaskListProps) {
   return (
     <div className={styles.outer}>
       <div className={styles.heading}>
@@ -17,11 +20,11 @@ export function TaskList() {
         </InfoText>
       </div>
       <div className={styles.taskListSeparator} />
-      {/* <TaskListEmpty /> */}
-      <Task
-        text={'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.'}
-        handleDelete={() => {}}
-      />
+      {tasks.length > 0 ? (
+        tasks.map((task, index) => <Task text={task} handleDelete={() => handleDeleteTask(index)} />)
+      ) : (
+        <TaskListEmpty />
+      )}
     </div>
   );
 }

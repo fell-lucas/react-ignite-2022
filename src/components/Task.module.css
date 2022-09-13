@@ -9,6 +9,7 @@
   padding: 16px;
   gap: 12px;
   transition: all 300ms;
+  margin-bottom: 12px;
 }
 
 .outerBorder {

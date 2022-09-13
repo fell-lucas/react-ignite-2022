@@ -9,7 +9,7 @@ interface TaskProps extends React.PropsWithChildren {
   handleDelete: () => void;
 }
 
-export function Task({ text, children }: TaskProps) {
+export function Task({ text, handleDelete, children }: TaskProps) {
   const [isDeleteHovered, setIsDeleteHovered] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
@@ -34,6 +34,7 @@ export function Task({ text, children }: TaskProps) {
         onMouseEnter={handleDeleteHover}
         onMouseLeave={handleDeleteHover}
         className={[styles.deleteButton, styles.button].join(' ')}
+        onClick={handleDelete}
       >
         {isDeleteHovered ? <img src={TrashIconRed} alt='Delete' /> : <img src={TrashIcon} alt='Delete' />}
       </button>
