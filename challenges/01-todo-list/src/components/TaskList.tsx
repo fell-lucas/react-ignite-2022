@@ -30,17 +30,19 @@ export function TaskList({ tasks, handleDeleteTask, handleFinishTask }: TaskList
         </InfoText>
       </div>
       <div className={styles.taskListSeparator} />
-      {tasks.length > 0 ? (
-        tasks.map((task, index) => (
-          <Task
-            task={task}
-            handleFinishTask={() => handleFinishTask(index)}
-            handleDelete={() => handleDeleteTask(index)}
-          />
-        ))
-      ) : (
-        <TaskListEmpty />
-      )}
+      <div className={styles.taskListContainer}>
+        {tasks.length > 0 ? (
+          tasks.map((task, index) => (
+            <Task
+              task={task}
+              handleFinishTask={() => handleFinishTask(index)}
+              handleDelete={() => handleDeleteTask(index)}
+            />
+          ))
+        ) : (
+          <TaskListEmpty />
+        )}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,4 @@
 .p {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
   font-weight: bold;
 }
 
@@ -13,4 +10,9 @@
 
 .p > a:hover {
   color: #808080b7
+}
+
+.outer {
+  display: flex;
+  flex-direction: column;
 }

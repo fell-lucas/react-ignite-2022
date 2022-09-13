@@ -29,9 +29,11 @@ export function App() {
       <main>
         <TaskInput handleAddTask={handleAddTask} />
         <TaskList tasks={taskList} handleDeleteTask={handleDeleteTask} handleFinishTask={handleFinishTask} />
+        <footer>
+          <Author />
+          <LanguageToggle />
+        </footer>
       </main>
-      <LanguageToggle />
-      <Author />
     </>
   );
 }

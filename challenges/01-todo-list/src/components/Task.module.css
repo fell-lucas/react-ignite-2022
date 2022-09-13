@@ -4,7 +4,7 @@
   border-radius: 8px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   padding: 16px;
   gap: 12px;
@@ -17,10 +17,11 @@
 }
 
 .outer > p {
-  width: 100%;
+  width: 82%;
   line-height: 140%;
   font-size: 14px;
   transition: all 300ms;
+  word-wrap: break-word;
 }
 
 .outerBorderDone {
@@ -28,6 +29,7 @@
 }
 
 .button {
+  width: 24px;
   background-color: transparent;
   transition: all 300ms;
   cursor: pointer;
