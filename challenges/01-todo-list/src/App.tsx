@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Banner, LanguageToggle, TaskInput, TaskList } from './components';
+import { Author, Banner, LanguageToggle, TaskInput, TaskList } from './components';
 import './i18n';
 
 export interface TaskModel {
@@ -31,6 +31,7 @@ export function App() {
         <TaskList tasks={taskList} handleDeleteTask={handleDeleteTask} handleFinishTask={handleFinishTask} />
       </main>
       <LanguageToggle />
+      <Author />
     </>
   );
 }

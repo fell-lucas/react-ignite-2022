@@ -1,3 +1,4 @@
+export * from './Author';
 export * from './Banner';
 export * from './LanguageToggle';
 export * from './Task';

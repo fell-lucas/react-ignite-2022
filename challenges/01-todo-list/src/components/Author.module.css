@@ -1,0 +1,16 @@
+.p {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  font-weight: bold;
+}
+
+.p > a {
+  color: #808080;
+  text-decoration: none;
+  transition: all 250ms;
+}
+
+.p > a:hover {
+  color: #808080b7
+}
