@@ -1,0 +1,79 @@
+.outer {
+  background-color: #262626;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;
+  transition: all 300ms;
+}
+
+.outerBorder {
+  border: 1px solid #333333;
+}
+
+.outer > p {
+  width: 100%;
+  line-height: 140%;
+  font-size: 14px;
+  transition: all 300ms;
+}
+
+.outerBorderDone {
+  border: 1px solid #262626
+}
+
+.button {
+  background-color: transparent;
+  transition: all 300ms;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uncheckedDoneButton {
+  padding: 2px;
+  width: 20px;
+  height: 20px;
+  border: 2px #4EA8DE solid;
+  border-radius: 10px;
+}
+
+.uncheckedDoneButton:hover {
+  border: 2px #1E6F9F solid;
+  background-color: #1E6F9F33;
+}
+
+.checkedDoneButton {
+  padding: 2px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: #5E60CE;
+  border-radius: 10px;
+}
+
+.checkedDoneButton:hover {
+  background-color: #8284FA;
+}
+
+.deleteButton {
+  width: 24px;
+  height: 24px;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.deleteButton:hover {
+  background-color: #333333;
+}
+
+.isDoneText {
+  text-decoration: line-through;
+  color: #808080;
+}
