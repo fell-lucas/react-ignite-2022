@@ -1,0 +1,13 @@
+{
+  "add-new-task": "Adicione uma nova tarefa",
+  "task-description": "Descrição da tarefa",
+  "add": "Criar",
+  "alt-done": "Feito",
+  "alt-delete": "Excluir",
+  "empty-tasks-title": "Você ainda não tem tarefas cadastradas",
+  "empty-tasks-subtitle": "Crie tarefas e organize seus itens a fazer",
+  "created-tasks": "Tarefas criadas",
+  "done": "Concluídas",
+  "of": "de",
+  "alt-language": "Mudar idioma"
+}

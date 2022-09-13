@@ -4,6 +4,7 @@ import TrashIcon from '../assets/Trash.svg';
 import TrashIconRed from '../assets/TrashRed.svg';
 import Checkmark from '../assets/Checkmark.svg';
 import { TaskModel } from '../App';
+import { useTranslation } from 'react-i18next';
 
 interface TaskProps extends React.PropsWithChildren {
   task: TaskModel;
@@ -12,6 +13,7 @@ interface TaskProps extends React.PropsWithChildren {
 }
 
 export function Task({ task, handleDelete, handleFinishTask, children }: TaskProps) {
+  const { t } = useTranslation();
   const [isDeleteHovered, setIsDeleteHovered] = useState(false);
 
   const handleDeleteHover = useCallback(() => {
@@ -24,7 +26,7 @@ export function Task({ task, handleDelete, handleFinishTask, children }: TaskPro
         onClick={handleFinishTask}
         className={[task.isDone ? styles.checkedDoneButton : styles.uncheckedDoneButton, styles.button].join(' ')}
       >
-        {task.isDone && <img src={Checkmark} alt='Done' />}
+        {task.isDone && <img src={Checkmark} alt={t('alt-done')} />}
       </button>
       <p className={task.isDone ? styles.isDoneText : ''}>{task.text}</p>
       <button
@@ -33,7 +35,11 @@ export function Task({ task, handleDelete, handleFinishTask, children }: TaskPro
         className={[styles.deleteButton, styles.button].join(' ')}
         onClick={handleDelete}
       >
-        {isDeleteHovered ? <img src={TrashIconRed} alt='Delete' /> : <img src={TrashIcon} alt='Delete' />}
+        {isDeleteHovered ? (
+          <img src={TrashIconRed} alt={t('alt-delete')} />
+        ) : (
+          <img src={TrashIcon} alt={t('alt-delete')} />
+        )}
       </button>
     </div>
   );

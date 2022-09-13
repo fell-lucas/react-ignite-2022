@@ -1,6 +1,7 @@
 import styles from './TaskInput.module.css';
 import PlusIcon from '../assets/plus.svg';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface TaskInputProps {
   handleAddTask: (text: string) => void;
@@ -9,6 +10,7 @@ interface TaskInputProps {
 export function TaskInput({ handleAddTask }: TaskInputProps) {
   const [inputFocused, setInputFocused] = useState(false);
   const [inputText, setInputText] = useState('');
+  const { t } = useTranslation();
 
   function handleFocus() {
     setInputFocused((state) => !state);
@@ -28,18 +30,18 @@ export function TaskInput({ handleAddTask }: TaskInputProps) {
   return (
     <div className={styles.outer}>
       <div className={[styles.input, inputFocused ? styles.inputBorderFocus : ''].join(' ')}>
-        {inputFocused && <p>Descrição da tarefa</p>}
+        {inputFocused && <p>{t('task-description')}</p>}
         <input
           value={inputText}
           onChange={(e) => handleInputChange(e.target.value)}
           type='text'
           onFocus={handleFocus}
           onBlur={handleFocus}
-          placeholder='Adicione uma nova tarefa'
+          placeholder={t('add-new-task')}
         />
       </div>
       <button onClick={handleCreate} className={styles.button}>
-        Criar <img src={PlusIcon} />
+        {t('add')} <img src={PlusIcon} />
       </button>
     </div>
   );

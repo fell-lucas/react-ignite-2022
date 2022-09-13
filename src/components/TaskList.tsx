@@ -3,6 +3,7 @@ import { Task } from './Task';
 import ClipboardIcon from '../assets/Clipboard.svg';
 import styles from './TaskList.module.css';
 import { TaskModel } from '../App';
+import { useTranslation } from 'react-i18next';
 
 interface TaskListProps {
   tasks: TaskModel[];
@@ -11,18 +12,21 @@ interface TaskListProps {
 }
 
 export function TaskList({ tasks, handleDeleteTask, handleFinishTask }: TaskListProps) {
-  const finishedText = useCallback(() => {
-    return `${tasks.filter((task) => task.isDone).length} de ${tasks.length}`;
-  }, [tasks]);
+  const { t } = useTranslation();
+
+  const finishedText = useCallback(
+    () => `${tasks.filter((task) => task.isDone).length} ${t('of')} ${tasks.length}`,
+    [tasks]
+  );
 
   return (
     <div className={styles.outer}>
       <div className={styles.heading}>
         <InfoText badge={`${tasks.length}`}>
-          <p style={{ color: '#4EA8DE' }}>Tarefas criadas</p>
+          <p style={{ color: '#4EA8DE' }}>{t('created-tasks')}</p>
         </InfoText>
         <InfoText badge={finishedText()}>
-          <p style={{ color: '#5E60CE' }}>Concluídas</p>
+          <p style={{ color: '#5E60CE' }}>{t('done')}</p>
         </InfoText>
       </div>
       <div className={styles.taskListSeparator} />
@@ -54,14 +58,16 @@ function InfoText({ badge, children }: InfoTextProps) {
 }
 
 function TaskListEmpty() {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.taskListEmpty}>
-      <img src={ClipboardIcon} width='56' alt='Clipboard' />
+      <img src={ClipboardIcon} width='56' />
       <div>
-        <p>
-          <b>Você ainda não tem tarefas cadastradas</b>
+        <p style={{ textAlign: 'center' }}>
+          <b>{t('empty-tasks-title')}</b>
         </p>
-        <p>Crie tarefas e organize seus itens a fazer</p>
+        <p>{t('empty-tasks-subtitle')}</p>
       </div>
     </div>
   );

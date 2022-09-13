@@ -1,0 +1,13 @@
+{
+  "add-new-task": "Add a new task",
+  "task-description": "Task description",
+  "add": "Add",
+  "alt-done": "Done",
+  "alt-delete": "Delete",
+  "empty-tasks-title": "You don't have any tasks",
+  "empty-tasks-subtitle": "Create tasks and organize your to-do items",
+  "created-tasks": "Created tasks",
+  "done": "Completed",
+  "of": "of",
+  "alt-language": "Change language"
+}
