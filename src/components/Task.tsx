@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from './Task.module.css';
 import TrashIcon from '../assets/Trash.svg';
 import TrashIconRed from '../assets/TrashRed.svg';
 import Checkmark from '../assets/Checkmark.svg';
+import { TaskModel } from '../App';
 
 interface TaskProps extends React.PropsWithChildren {
-  text: string;
+  task: TaskModel;
   handleDelete: () => void;
+  handleFinishTask: () => void;
 }
 
-export function Task({ text, handleDelete, children }: TaskProps) {
+export function Task({ task, handleDelete, handleFinishTask, children }: TaskProps) {
   const [isDeleteHovered, setIsDeleteHovered] = useState(false);
-  const [isDone, setIsDone] = useState(false);
 
-  function handleDeleteHover() {
+  const handleDeleteHover = useCallback(() => {
     setIsDeleteHovered((state) => !state);
-  }
-
-  function handleDone() {
-    setIsDone((state) => !state);
-  }
+  }, [isDeleteHovered]);
 
   return (
-    <div className={[styles.outer, isDone ? styles.outerBorderDone : styles.outerBorder].join(' ')}>
+    <div className={[styles.outer, task.isDone ? styles.outerBorderDone : styles.outerBorder].join(' ')}>
       <button
-        onClick={handleDone}
-        className={[isDone ? styles.checkedDoneButton : styles.uncheckedDoneButton, styles.button].join(' ')}
+        onClick={handleFinishTask}
+        className={[task.isDone ? styles.checkedDoneButton : styles.uncheckedDoneButton, styles.button].join(' ')}
       >
-        {isDone && <img src={Checkmark} alt='Done' />}
+        {task.isDone && <img src={Checkmark} alt='Done' />}
       </button>
-      <p className={isDone ? styles.isDoneText : ''}>{text}</p>
+      <p className={task.isDone ? styles.isDoneText : ''}>{task.text}</p>
       <button
         onMouseEnter={handleDeleteHover}
         onMouseLeave={handleDeleteHover}

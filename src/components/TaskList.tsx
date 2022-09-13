@@ -1,27 +1,39 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Task } from './Task';
 import ClipboardIcon from '../assets/Clipboard.svg';
 import styles from './TaskList.module.css';
+import { TaskModel } from '../App';
 
 interface TaskListProps {
-  tasks: string[];
+  tasks: TaskModel[];
   handleDeleteTask: (index: number) => void;
+  handleFinishTask: (index: number) => void;
 }
 
-export function TaskList({ tasks, handleDeleteTask }: TaskListProps) {
+export function TaskList({ tasks, handleDeleteTask, handleFinishTask }: TaskListProps) {
+  const finishedText = useCallback(() => {
+    return `${tasks.filter((task) => task.isDone).length} de ${tasks.length}`;
+  }, [tasks]);
+
   return (
     <div className={styles.outer}>
       <div className={styles.heading}>
-        <InfoText badge='0'>
+        <InfoText badge={`${tasks.length}`}>
           <p style={{ color: '#4EA8DE' }}>Tarefas criadas</p>
         </InfoText>
-        <InfoText badge='2 de 5'>
+        <InfoText badge={finishedText()}>
           <p style={{ color: '#5E60CE' }}>Concluídas</p>
         </InfoText>
       </div>
       <div className={styles.taskListSeparator} />
       {tasks.length > 0 ? (
-        tasks.map((task, index) => <Task text={task} handleDelete={() => handleDeleteTask(index)} />)
+        tasks.map((task, index) => (
+          <Task
+            task={task}
+            handleFinishTask={() => handleFinishTask(index)}
+            handleDelete={() => handleDeleteTask(index)}
+          />
+        ))
       ) : (
         <TaskListEmpty />
       )}
