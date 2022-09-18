@@ -12,6 +12,7 @@ interface Cycle {
 export type CreateNewCycleData = Pick<Cycle, 'task' | 'minutesAmount'>
 
 interface CyclesContextData {
+  cycles: Cycle[]
   activeCycle: Cycle | undefined
   amountSecondsPassed: number
   markCurrentCycleAsFinished: () => void
@@ -75,6 +76,7 @@ export function CycleProvider({ children }: React.PropsWithChildren) {
   return (
     <CyclesContext.Provider
       value={{
+        cycles,
         activeCycle,
         amountSecondsPassed,
         markCurrentCycleAsFinished,
