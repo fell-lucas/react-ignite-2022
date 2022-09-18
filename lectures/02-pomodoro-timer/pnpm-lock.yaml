@@ -9,6 +9,7 @@ specifiers:
   '@vitejs/plugin-react': ^2.1.0
   date-fns: ^2.29.3
   eslint: ^8.23.1
+  immer: ^9.0.15
   phosphor-react: ^1.4.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -23,6 +24,7 @@ specifiers:
 dependencies:
   '@hookform/resolvers': 2.9.8_react-hook-form@7.35.0
   date-fns: 2.29.3
+  immer: 9.0.15
   phosphor-react: 1.4.1_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1853,6 +1855,10 @@ packages:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
     engines: {node: '>= 4'}
     dev: true
+
+  /immer/9.0.15:
+    resolution: {integrity: sha512-2eB/sswms9AEUSkOm4SbV5Y7Vmt/bKRwByd52jfLkW4OLYeaTP3EEiJ9agqU0O/tq6Dk62Zfj+TJSqfm1rLVGQ==}
+    dev: false
 
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
