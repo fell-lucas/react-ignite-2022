@@ -45,6 +45,10 @@ export function CycleProvider({ children }: React.PropsWithChildren) {
           return val
         })
       }
+      return {
+        cycles: [],
+        activeCycleId: null,
+      }
     },
   )
 

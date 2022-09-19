@@ -10,6 +10,7 @@ import {
 import { Countdown, NewCycleForm } from './components'
 import { useContext } from 'react'
 import { CyclesContext } from '../../contexts'
+import { useTranslation } from 'react-i18next'
 
 const newCycleSubmitFormSchema = z.object({
   task: z.string(),
@@ -21,6 +22,7 @@ type NewCycleSubmitType = z.infer<typeof newCycleSubmitFormSchema>
 export function Home() {
   const { createNewCycle, activeCycle, interruptCurrentCycle } =
     useContext(CyclesContext)
+  const { t } = useTranslation('home')
 
   const newCycleForm = useForm<NewCycleSubmitType>({
     resolver: zodResolver(newCycleSubmitFormSchema),
@@ -58,12 +60,12 @@ export function Home() {
             type="button"
           >
             <HandPalm size={24} />
-            Interromper
+            {t('interromper')}
           </StopCountdownButton>
         ) : (
           <StartCountdownButton disabled={isSubmitDisabled} type="submit">
             <Play size={24} />
-            Começar
+            {t('comecar')}
           </StartCountdownButton>
         )}
       </form>

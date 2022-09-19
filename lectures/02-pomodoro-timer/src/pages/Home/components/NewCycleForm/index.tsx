@@ -2,30 +2,29 @@ import { useContext } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { CyclesContext } from '../../../../contexts'
 import { FormContainer, TaskInput, MinutesAmountInput } from './styles'
+import { useTranslation } from 'react-i18next'
 
 export function NewCycleForm() {
   const { activeCycle } = useContext(CyclesContext)
   const { register } = useFormContext()
+  const { t } = useTranslation('home')
 
   return (
     <FormContainer>
-      <label htmlFor="task">Vou trabalhar em</label>
+      <label htmlFor="task">{t('vou-trabalhar-em')}</label>
       <TaskInput
         id="task"
         list="task-suggestions"
-        placeholder="Dê um nome para o seu projeto"
+        placeholder={t('de-um-nome-para-o-seu-projeto')}
         disabled={!!activeCycle}
         {...register('task')}
       />
 
       <datalist id="task-suggestions">
-        <option value="Projeto 1" />
-        <option value="Projeto 2" />
-        <option value="Projeto 3" />
-        <option value="Projeto 4" />
+        <option value={t('projeto-1')} />
       </datalist>
 
-      <label htmlFor="minutesAmount">durante</label>
+      <label htmlFor="minutesAmount">{t('durante')}</label>
       <MinutesAmountInput
         type="number"
         id="minutesAmount"
@@ -37,7 +36,7 @@ export function NewCycleForm() {
         {...register('minutesAmount', { valueAsNumber: true })}
       />
 
-      <span>minutos.</span>
+      <span>{t('minutos')}</span>
     </FormContainer>
   )
 }
