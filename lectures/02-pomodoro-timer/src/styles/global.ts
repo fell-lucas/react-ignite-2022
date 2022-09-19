@@ -24,4 +24,22 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 1rem;
   }
+  
+  *::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['green-500']};
+    border-radius: 5px;
+  }
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: ${(props) => props.theme['green-500']} transparent;
+  }
 `

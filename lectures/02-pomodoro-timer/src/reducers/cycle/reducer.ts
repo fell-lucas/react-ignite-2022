@@ -33,6 +33,7 @@ export function cycleReducer(state: CycleState, action: any) {
 
       return produce(state, (draft) => {
         draft.cycles[currentCycleIndex].finishedDate = new Date()
+        draft.activeCycleId = null
       })
     }
     case ActionTypes.INTERRUPT_CURRENT_CYCLE: {

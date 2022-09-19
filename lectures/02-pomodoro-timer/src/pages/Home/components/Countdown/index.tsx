@@ -1,6 +1,7 @@
 import { differenceInSeconds } from 'date-fns'
-import { useContext, useEffect } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 import { CyclesContext } from '../../../../contexts'
+import { Cycle } from '../../../../reducers/cycle'
 import { CountdownContainer, Separator } from './styles'
 
 export function Countdown() {
@@ -13,28 +14,40 @@ export function Countdown() {
 
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
 
+  const runInInterval = useCallback(
+    (activeCycle: Cycle) => {
+      const secondsDiffFromStartToNow = differenceInSeconds(
+        new Date(),
+        activeCycle.startDate,
+      )
+
+      if (secondsDiffFromStartToNow >= totalSeconds) {
+        finishCurrentCycle()
+        setSecondsPassed(totalSeconds)
+      } else {
+        setSecondsPassed(secondsDiffFromStartToNow)
+      }
+    },
+    [finishCurrentCycle, totalSeconds, setSecondsPassed],
+  )
+
+  // Removes 1s delay when switching to Timer tab and the countdown is concluded
+  useEffect(() => {
+    if (activeCycle) {
+      runInInterval(activeCycle)
+    }
+  })
+
   useEffect(() => {
     let interval: number
     if (activeCycle) {
-      interval = setInterval(() => {
-        const secondsDiffFromStartToNow = differenceInSeconds(
-          new Date(),
-          activeCycle.startDate,
-        )
-
-        if (secondsDiffFromStartToNow >= totalSeconds) {
-          finishCurrentCycle()
-          setSecondsPassed(totalSeconds)
-        } else {
-          setSecondsPassed(secondsDiffFromStartToNow)
-        }
-      }, 1000)
+      interval = setInterval(() => runInInterval(activeCycle), 1000)
     }
 
     return () => {
       clearInterval(interval)
     }
-  }, [activeCycle, totalSeconds, finishCurrentCycle, setSecondsPassed])
+  }, [activeCycle, runInInterval])
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
 
   const minutesAmount = Math.floor(currentSeconds / 60)
@@ -45,7 +58,7 @@ export function Countdown() {
 
   useEffect(() => {
     if (activeCycle) {
-      document.title = `Timer ${minutes}:${seconds}`
+      document.title = `${minutes}:${seconds}`
     } else {
       document.title = `Ignite Pomodoro Timer`
     }
