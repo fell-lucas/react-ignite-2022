@@ -1,13 +1,13 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Checkout, Home, Success } from "./pages";
+import { createBrowserRouter } from 'react-router-dom';
+import { Checkout, Home } from './pages';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />
+    path: '/',
+    element: <Home />,
   },
   {
-    path: "/checkout",
+    path: '/checkout',
     element: <Checkout />,
     // children: [
     //   {
@@ -15,5 +15,5 @@ export const router = createBrowserRouter([
     //     element: <Success />
     //   }
     // ]
-  }
-])
+  },
+]);
