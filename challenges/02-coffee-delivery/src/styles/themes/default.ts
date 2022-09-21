@@ -1,0 +1,36 @@
+export const defaultTheme = {
+  /* Color styles */
+  baseWhite: 'rgba(255, 255, 255, 1)',
+  baseBackground: 'rgba(250, 250, 250, 1)',
+  baseCard: 'rgba(243, 242, 242, 1)',
+  baseInput: 'rgba(237, 237, 237, 1)',
+  baseButton: 'rgba(230, 229, 229, 1)',
+  baseHover: 'rgba(215, 213, 213, 1)',
+  baseLabel: 'rgba(141, 134, 134, 1)',
+  baseText: 'rgba(87, 79, 77, 1)',
+  baseSubtitle: 'rgba(64, 57, 55, 1)',
+  baseTitle: 'rgba(39, 34, 33, 1)',
+  brandPurpleDark: 'rgba(75, 41, 149, 1)',
+  brandPurple: 'rgba(128, 71, 248, 1)',
+  brandPurpleLight: 'rgba(235, 229, 249, 1)',
+  brandYellowDark: 'rgba(196, 127, 23, 1)',
+  brandYellow: 'rgba(219, 172, 44, 1)',
+  brandYellowLight: 'rgba(241, 233, 201, 1)',
+
+  /* Text-size styles */
+  /* base size: textRegularS (14px) */
+  titleXl: '3.43rem',
+  titleL: '2.29rem',
+  titleM: '1.71rem',
+  titleS: '1.43rem',
+  titleXs: '1.29rem',
+  textRegularL: '1.43rem',
+  textBoldL: '1.43rem',
+  textRegularM: '1.14rem',
+  textBoldM: '1.14rem',
+  textRegularS: '1rem',
+  textBoldS: '0.86rem',
+  componentsTag: '0.71rem',
+  componentsButtonG: '1rem',
+  componentsButtonS: '0.86rem',
+};
