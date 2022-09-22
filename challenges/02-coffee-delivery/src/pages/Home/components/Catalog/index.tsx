@@ -1,6 +1,7 @@
+import { CatalogContainer, CatalogFilter, CatalogHeader, CatalogTitle } from './styles';
 import { useEffect, useState } from 'react';
-import { CatalogCard } from '../CatalogCard';
-import { CatalogHeader, CatalogTitle, CatalogFilter, CatalogContainer } from './styles';
+
+import { Card } from '../Card';
 
 export interface Coffee {
   id: string;
@@ -39,7 +40,7 @@ export function Catalog() {
       </CatalogHeader>
       <CatalogContainer>
         {coffeeList.map((coffee) => (
-          <CatalogCard coffee={coffee} key={coffee.id} />
+          <Card coffee={coffee} key={coffee.id} />
         ))}
       </CatalogContainer>
     </div>

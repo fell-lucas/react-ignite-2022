@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CoffeeCardContainer = styled.div`
+export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,18 +12,18 @@ export const CoffeeCardContainer = styled.div`
   padding: 24px;
 `;
 
-export const CoffeeImage = styled.img`
+export const CardImage = styled.img`
   width: 120px;
   margin-top: -44px;
   margin-bottom: 12px;
 `;
 
-export const CoffeeCategoryContainer = styled.div`
+export const CardCategoryContainer = styled.div`
   display: flex;
   gap: 4px;
 `;
 
-export const CoffeeCategory = styled.p`
+export const CardCategory = styled.p`
   font-family: 'Roboto', sans-serif;
   font-size: ${(props) => props.theme.typography.componentsTag};
   font-weight: 700;
@@ -34,7 +34,7 @@ export const CoffeeCategory = styled.p`
   border-radius: 100px;
 `;
 
-export const CoffeeName = styled.h3`
+export const CardName = styled.h3`
   font-size: ${(props) => props.theme.typography.titleS};
   color: ${(props) => props.theme.colors.baseSubtitle};
   font-family: 'Baloo 2', cursive;
@@ -43,36 +43,9 @@ export const CoffeeName = styled.h3`
   margin-bottom: 8px;
 `;
 
-export const CoffeeDescription = styled.p`
+export const CardDescription = styled.p`
   font-size: ${(props) => props.theme.typography.textRegularS};
   color: ${(props) => props.theme.colors.baseLabel};
   text-align: center;
   margin-bottom: 32px;
 `;
-
-export const CoffeeFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  div {
-    display: flex;
-  }
-`;
-
-export const CoffeePrice = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  font-family: 'Baloo 2', cursive;
-
-  h2 {
-    font-size: ${(props) => props.theme.typography.titleM};
-    font-weight: 800;
-  }
-`;
-
-export const CoffeeQuantityContainer = styled.div``;
-
-export const CoffeeQuantityButton = styled.button``;

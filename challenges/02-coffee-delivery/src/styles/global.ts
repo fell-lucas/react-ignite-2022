@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 32px;
   }
 
   #root {
