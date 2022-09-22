@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import IntroBackgroundImage from '../../assets/intro-background.svg';
 
 export const IntroBackground = styled.div`
@@ -18,6 +19,16 @@ export const IntroContainer = styled.div`
   padding: 92px 0;
   justify-content: center;
   align-items: center;
+
+  ${media.lessThan('medium')`
+    img {
+      width: 70vw
+    }
+  `}
+
+  ${media.lessThan('large')`
+    flex-direction: column;
+  `}
 `;
 
 export const Title = styled.h1`
