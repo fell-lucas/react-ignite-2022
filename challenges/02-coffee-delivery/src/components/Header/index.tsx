@@ -1,19 +1,28 @@
 import { MapPin, ShoppingCart } from 'phosphor-react';
 import Logo from '../../assets/Logo.svg';
-import { Location, Cart, HeaderContainer } from './styles';
+import { defaultTheme } from '../../styles/themes';
+import { IconContainer } from '../IconContainer';
+import { HeaderContainer } from './styles';
 
 export function Header() {
   return (
     <HeaderContainer>
       <img alt="" src={Logo} />
       <nav>
-        <Location>
+        <IconContainer
+          bgColor={defaultTheme.colors.brandPurpleLight}
+          iconColor={defaultTheme.colors.brandPurple}
+          text="Porto Alegre, RS"
+          textColor={defaultTheme.colors.brandPurpleDark}
+        >
           <MapPin size={22} weight="fill" />
-          <p>Porto Alegre, RS</p>
-        </Location>
-        <Cart>
+        </IconContainer>
+        <IconContainer
+          bgColor={defaultTheme.colors.brandYellowLight}
+          iconColor={defaultTheme.colors.brandYellow}
+        >
           <ShoppingCart size={22} weight="fill" />
-        </Cart>
+        </IconContainer>
       </nav>
     </HeaderContainer>
   );

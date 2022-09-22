@@ -8,8 +8,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme.baseBackground};
-    color: ${(props) => props.theme.baseText};
+    background: ${(props) => props.theme.colors.baseBackground};
+    color: ${(props) => props.theme.colors.baseText};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-width: 320px;
@@ -18,11 +18,22 @@ export const GlobalStyle = createGlobalStyle`
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-text-size-adjust: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #root {
+    width: 1440px;
+    padding: 0px calc(100% / 12);
   }
 
   body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
+  }
+
+  h1, h3, p {
+    line-height: 130%;
   }
 
   *::-webkit-scrollbar {
@@ -34,12 +45,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.brandPurple};
+    background-color: ${(props) => props.theme.colors.brandPurple};
     border-radius: 5px;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: ${(props) => props.theme.brandPurple} transparent;
+    scrollbar-color: ${(props) => props.theme.colors.brandPurple} transparent;
   }
 `;
