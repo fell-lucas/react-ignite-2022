@@ -3,6 +3,7 @@ export const defaultTheme = {
   colors: {
     baseWhite: 'rgba(255, 255, 255, 1)',
     baseBackground: 'rgba(250, 250, 250, 1)',
+    baseBackgroundOpaque: 'rgba(250, 250, 250, 0.9)',
     baseCard: 'rgba(243, 242, 242, 1)',
     baseInput: 'rgba(237, 237, 237, 1)',
     baseButton: 'rgba(230, 229, 229, 1)',

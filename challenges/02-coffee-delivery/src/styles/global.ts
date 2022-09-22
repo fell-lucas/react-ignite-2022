@@ -38,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 3px;
+    width: 5px;
   }
 
   *::-webkit-scrollbar-track {
