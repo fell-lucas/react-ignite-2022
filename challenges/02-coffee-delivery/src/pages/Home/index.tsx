@@ -1,5 +1,5 @@
 import IntroImage from '../../assets/intro-image.png';
-import { IntroList } from './components';
+import { Catalog, IntroList } from './components';
 import { IntroBackground, IntroContainer, Subtitle, Title } from './styles';
 
 export function Home() {
@@ -16,6 +16,7 @@ export function Home() {
         </div>
         <img alt="" src={IntroImage} />
       </IntroContainer>
+      <Catalog />
     </>
   );
 }

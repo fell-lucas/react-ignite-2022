@@ -20,21 +20,21 @@ export const defaultTheme = {
   },
 
   /* Text-size styles */
-  /* base size: textRegularS (14px) */
+  /* base size: textRegularM (16px) */
   typography: {
-    titleXl: '48px',
-    titleL: '32px',
-    titleM: '24px',
-    titleS: '20px',
-    titleXs: '18px',
-    textRegularL: '20px',
-    textBoldL: '20px',
-    textRegularM: '16px',
-    textBoldM: '16px',
-    textRegularS: '14px',
-    textBoldS: '12px',
-    componentsTag: '10px',
-    componentsButtonG: '14px',
-    componentsButtonS: '12px',
+    titleXl: '3rem',
+    titleL: '2rem',
+    titleM: '1.5rem',
+    titleS: '1.25rem',
+    titleXs: '1.12rem',
+    textRegularL: '1.25rem',
+    textBoldL: '1.25rem',
+    textRegularM: '1rem',
+    textBoldM: '1rem',
+    textRegularS: '0.88rem',
+    textBoldS: '0.75rem',
+    componentsTag: '0.62rem',
+    componentsButtonG: '0.88rem',
+    componentsButtonS: '0.75rem',
   },
 };
