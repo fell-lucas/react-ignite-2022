@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { ValueDisplayContainer, CheckoutConfirmButton, ValueDisplay } from './styles';
 
 export function CheckoutConfirm() {
@@ -17,7 +18,9 @@ export function CheckoutConfirm() {
           <h3>R$ 33,20</h3>
         </ValueDisplay>
       </ValueDisplayContainer>
-      <CheckoutConfirmButton type="button">Confirmar pedido</CheckoutConfirmButton>
+      <NavLink to="/success">
+        <CheckoutConfirmButton type="button">Confirmar pedido</CheckoutConfirmButton>
+      </NavLink>
     </div>
   );
 }

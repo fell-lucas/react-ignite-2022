@@ -1,3 +1,3 @@
 export * from './Checkout';
-export * from './CheckoutSuccess';
+export * from './Success';
 export * from './Home';

@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.baseText};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-width: 320px;
     min-height: 100vh;
     font-family: Roboto, Inter, Helvetica, Arial, sans-serif;
     font-synthesis: none;
@@ -24,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #root {
-    width: 1440px;
+    max-width: 1440px;
     padding: 0px calc(100% / 12);
   }
 
