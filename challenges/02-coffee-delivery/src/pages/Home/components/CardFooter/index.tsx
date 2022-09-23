@@ -1,11 +1,6 @@
-import {
-  CardAddToCartButton,
-  CardFooterContainer,
-  CardPrice,
-  CardQtyButton,
-  CardQtyContainer,
-} from './styles';
-import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react';
+import { CardAddToCartButton, CardFooterContainer, CardPrice } from './styles';
+import { ShoppingCartSimple } from 'phosphor-react';
+import { QuantityInput } from '../../../../components';
 
 interface CatalogCardFooterProps {
   price: number;
@@ -18,15 +13,7 @@ export function CardFooter({ price }: CatalogCardFooterProps) {
         R$<h2>{price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h2>
       </CardPrice>
       <div>
-        <CardQtyContainer>
-          <CardQtyButton>
-            <Minus size={14} weight="bold" />
-          </CardQtyButton>
-          <p>1</p>
-          <CardQtyButton>
-            <Plus size={14} weight="bold" />
-          </CardQtyButton>
-        </CardQtyContainer>
+        <QuantityInput />
         <CardAddToCartButton type="button">
           <ShoppingCartSimple size={22} weight="fill" />
         </CardAddToCartButton>

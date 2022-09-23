@@ -28,8 +28,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0px calc(100% / 12);
   }
 
-  body, input, textarea, button {
+  body, input, textarea, button, h4, p {
     font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     font-size: 1rem;
   }
 
