@@ -29,5 +29,6 @@ export const BaseInput = styled.div`
     font-style: italic;
     font-size: 12px;
     padding: 0px 12px;
+    line-height: 100%;
   }
 `;
