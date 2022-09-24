@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { CartContext } from '../../contexts';
 import {
   CheckoutAddress,
   CheckoutCartItem,
@@ -7,6 +9,8 @@ import {
 import { CheckoutContainer, LeftContainer, RightContainer, SectionTitle } from './styles';
 
 export function Checkout() {
+  const { cartState } = useContext(CartContext);
+
   return (
     <CheckoutContainer>
       <div>
@@ -20,11 +24,14 @@ export function Checkout() {
       </div>
       <div>
         <SectionTitle>Cafés selecionados</SectionTitle>
-        <RightContainer>
-          <CheckoutCartItem />
-          <CheckoutCartItem />
-          <CheckoutConfirm />
-        </RightContainer>
+        {cartState.totalItems > 0 && (
+          <RightContainer>
+            {cartState.coffeeList.map((coffee) => (
+              <CheckoutCartItem coffee={coffee} key={coffee.id} />
+            ))}
+            <CheckoutConfirm />
+          </RightContainer>
+        )}
       </div>
     </CheckoutContainer>
   );

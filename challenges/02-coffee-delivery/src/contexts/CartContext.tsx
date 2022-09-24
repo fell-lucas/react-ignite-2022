@@ -1,15 +1,18 @@
 import { createContext, PropsWithChildren, useMemo, useReducer } from 'react';
-import { cartReducer, CartState } from '../reducers';
+import { ActionType, cartReducer, CartState, CoffeeWithQuantity } from '../reducers';
 
 interface CartContextData {
   cartState: CartState;
+  addCoffeeToCart: (coffee: CoffeeWithQuantity) => void;
 }
 
 const cartContextInitialValues: CartContextData = {
   cartState: {
     coffeeList: [],
     totalPrice: 0,
+    totalItems: 0,
   },
+  addCoffeeToCart: () => null,
 };
 
 export const CartContext = createContext<CartContextData>(cartContextInitialValues);
@@ -20,7 +23,19 @@ export function CartProvider({ children }: PropsWithChildren) {
     cartContextInitialValues.cartState,
   );
 
-  const cartContextValue = useMemo<CartContextData>(() => ({ cartState }), [cartState]);
+  function addCoffeeToCart(coffee: CoffeeWithQuantity) {
+    dispatch({
+      type: ActionType.AddCoffeeToCart,
+      payload: {
+        coffee,
+      },
+    });
+  }
+
+  const cartContextValue = useMemo<CartContextData>(
+    () => ({ cartState, addCoffeeToCart }),
+    [cartState],
+  );
 
   return <CartContext.Provider value={cartContextValue}>{children}</CartContext.Provider>;
 }

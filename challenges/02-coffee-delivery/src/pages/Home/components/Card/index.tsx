@@ -8,7 +8,7 @@ import {
 } from './styles';
 
 import { CardFooter } from '../CardFooter';
-import { Coffee } from '../Catalog';
+import { Coffee } from '../../../../reducers';
 
 interface CatalogCardProps {
   coffee: Coffee;
@@ -25,7 +25,7 @@ export function Card({ coffee }: CatalogCardProps) {
       </CardCategoryContainer>
       <CardName>{coffee.name}</CardName>
       <CardDescription>{coffee.description}</CardDescription>
-      <CardFooter price={coffee.price} />
+      <CardFooter coffee={coffee} />
     </CardContainer>
   );
 }
