@@ -1,12 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
 import { MapPin, Timer, CurrencyDollar } from 'phosphor-react';
-import { ipDataFetch, IpDataResponse } from '../../../../components';
 import { defaultTheme } from '../../../../styles/themes';
 import { DeliveryInfoContainer, DeliveryInfoItem, IconCircle } from './styles';
 
 export function DeliveryInfo() {
-  const { data } = useQuery<IpDataResponse>(['ipdata'], ipDataFetch);
-
   return (
     <DeliveryInfoContainer>
       <DeliveryInfoItem>
@@ -14,9 +10,9 @@ export function DeliveryInfo() {
           <MapPin size={16} weight="fill" />
         </IconCircle>
         <p>
-          Entrega em <b>Rua abc, 123</b>
+          Entrega em <b>Alguma Rua, 123</b>
           <br />
-          {data?.city}, {data?.region_code}
+          Algum Bairro - Alguma Cidade, 🌍
         </p>
       </DeliveryInfoItem>
       <DeliveryInfoItem>

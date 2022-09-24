@@ -10,7 +10,6 @@
     "lint": "eslint ./src --ext=['.ts','.tsx']"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.6.0",
     "@types/styled-components": "^5.1.26",
     "immer": "^9.0.15",
     "phosphor-react": "^1.4.1",
