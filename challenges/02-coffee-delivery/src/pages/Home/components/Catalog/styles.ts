@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const CatalogHeader = styled.div`
   display: flex;
@@ -10,6 +11,8 @@ export const CatalogHeader = styled.div`
     justify-content: center;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
+    margin-left: 20px;
   }
 `;
 
@@ -41,4 +44,12 @@ export const CatalogContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 32px;
+
+  ${media.lessThan('large')`
+    grid-template-columns: 1fr 1fr;
+  `}
+
+  ${media.lessThan('medium')`
+    grid-template-columns: 1fr;
+  `}
 `;
