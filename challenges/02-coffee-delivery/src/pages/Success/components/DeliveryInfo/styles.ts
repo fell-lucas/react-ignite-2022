@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const IconCircle = styled.div<{ bg: string }>`
   background-color: ${(props) => props.bg};
@@ -15,6 +16,10 @@ export const DeliveryInfoContainer = styled.div`
   flex-direction: column;
   flex: 1;
   max-width: 520px;
+  ${media.greaterThan('medium')`
+    min-width: 400px;
+  `}
+
   border-radius: 6px 36px;
   padding: 40px;
   gap: 32px;
