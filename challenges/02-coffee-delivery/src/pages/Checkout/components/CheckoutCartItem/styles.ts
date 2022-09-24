@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { BaseIconButton } from '../../../../styles/shared';
 
 export const SelectedItem = styled.div`
@@ -6,6 +7,10 @@ export const SelectedItem = styled.div`
   position: relative;
   display: flex;
   gap: 20px;
+
+  ${media.lessThan('large')`
+    position: relative;
+  `}
 
   img {
     width: 64px;
@@ -18,7 +23,10 @@ export const SelectedItem = styled.div`
     font-family: 'Roboto';
     white-space: nowrap;
     color: ${(props) => props.theme.colors.baseText};
-    margin-left: 20px;
+    ${media.lessThan('large')`
+      position: absolute;
+      right: 0;
+    `}
   }
 `;
 
@@ -43,6 +51,12 @@ export const SelectedItemActionsContainer = styled.div`
 
 export const RemoveButton = styled(BaseIconButton)`
   padding: 8.5px 8px;
+
+  ${media.lessThan('medium')`
+    & > p {
+      display: none;
+    }
+  `}
 `;
 
 export const Separator = styled.hr`

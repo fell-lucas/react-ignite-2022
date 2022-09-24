@@ -8,6 +8,7 @@ export const HeaderContainer = styled.header`
   padding: 12px 20px;
   margin: 20px 12px;
   gap: 20px;
+  z-index: 10;
 
   background-color: ${(props) => props.theme.colors.baseBackgroundOpaque};
   border-bottom-left-radius: 20px;

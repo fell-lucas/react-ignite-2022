@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { BaseIconButton } from '../../../../styles/shared';
 
 export const PaymentMethodButton = styled(BaseIconButton)`
@@ -14,4 +15,8 @@ export const PaymentMethodButton = styled(BaseIconButton)`
 export const PaymentMethodsContainer = styled.div`
   display: flex;
   gap: 12px;
+
+  ${media.lessThan('medium')`
+    flex-direction: column;
+  `}
 `;

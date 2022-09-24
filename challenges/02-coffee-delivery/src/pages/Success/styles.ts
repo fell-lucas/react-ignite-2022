@@ -22,7 +22,7 @@ export const SuccessMainContainer = styled.main`
   align-items: center;
   gap: 20px;
   & > img {
-    max-width: 520px;
+    max-width: 440px;
     width: 90%;
   }
 
