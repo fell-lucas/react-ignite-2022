@@ -1,26 +1,36 @@
-import { NavLink } from 'react-router-dom';
-import { ValueDisplayContainer, CheckoutConfirmButton, ValueDisplay } from './styles';
+import { useCallback, useContext } from 'react';
+import { CartContext } from '../../../../contexts';
+import { ValueDisplayContainer, ValueDisplay } from './styles';
 
 export function CheckoutConfirm() {
+  const { cartState } = useContext(CartContext);
+  const deliveryFee = 3.5;
+
+  const displayCurrency = useCallback((price: number) => {
+    return price.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      currency: 'BRL',
+      currencyDisplay: 'symbol',
+      style: 'currency',
+    });
+  }, []);
+
   return (
     <div>
       <ValueDisplayContainer>
         <ValueDisplay>
           <p>Total de itens</p>
-          <h4>R$ 29,70</h4>
+          <h4>{displayCurrency(cartState.totalPrice)}</h4>
         </ValueDisplay>
         <ValueDisplay>
           <p>Entrega</p>
-          <h4>R$ 3,50</h4>
+          <h4>{displayCurrency(deliveryFee)}</h4>
         </ValueDisplay>
         <ValueDisplay>
           <h3>Total</h3>
-          <h3>R$ 33,20</h3>
+          <h3>{displayCurrency(cartState.totalPrice + deliveryFee)}</h3>
         </ValueDisplay>
       </ValueDisplayContainer>
-      <NavLink to="/success">
-        <CheckoutConfirmButton type="button">Confirmar pedido</CheckoutConfirmButton>
-      </NavLink>
     </div>
   );
 }

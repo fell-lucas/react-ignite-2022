@@ -2,6 +2,8 @@ import { CoffeeWithQuantity } from './reducer';
 
 export enum ActionType {
   AddCoffeeToCart,
+  UpdateCoffeeQuantity,
+  RemoveCoffeeFromCart,
 }
 
 export interface Action {

@@ -16,7 +16,7 @@ export function CardFooter({ coffee }: CardFooterProps) {
   const updateQuantity = useCallback(
     (newQuantity: number) => {
       const newState = quantity + newQuantity;
-      if (newState > 0 && newState <= 20) {
+      if (newState > 0) {
         setQuantity(newState);
       }
     },

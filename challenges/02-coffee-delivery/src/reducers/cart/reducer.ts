@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { WritableDraft } from 'immer/dist/internal';
 import { Action, ActionType } from './actions';
 
 export interface Coffee {
@@ -21,13 +22,26 @@ export interface CartState {
 }
 
 export function cartReducer(state: CartState, action: Action): CartState {
+  const updateTotals = (draft: WritableDraft<CartState>): void => {
+    draft.totalPrice = draft.coffeeList.reduce((acc, cur) => {
+      acc += cur.price * cur.quantity;
+      return acc;
+    }, 0);
+
+    draft.totalItems = draft.coffeeList.reduce((acc, cur) => {
+      acc += cur.quantity;
+      return acc;
+    }, 0);
+  };
+
+  const getCoffeeIndex = (coffeId: string) =>
+    state.coffeeList.findIndex((coffee) => coffee.id === coffeId);
+
   switch (action.type) {
     case ActionType.AddCoffeeToCart:
       return produce(state, (draft) => {
         if (action.payload && action.payload.coffee.quantity > 0) {
-          const existingCoffeeIndex = state.coffeeList.findIndex(
-            (coffee) => coffee.id === action.payload?.coffee.id,
-          );
+          const existingCoffeeIndex = getCoffeeIndex(action.payload.coffee.id);
 
           if (existingCoffeeIndex !== -1) {
             draft.coffeeList[existingCoffeeIndex].quantity +=
@@ -36,15 +50,31 @@ export function cartReducer(state: CartState, action: Action): CartState {
             draft.coffeeList.push(action.payload.coffee);
           }
 
-          draft.totalPrice = draft.coffeeList.reduce((acc, cur) => {
-            acc += cur.price * cur.quantity;
-            return acc;
-          }, 0);
+          updateTotals(draft);
+        }
+      });
+    case ActionType.UpdateCoffeeQuantity:
+      return produce(state, (draft) => {
+        if (action.payload) {
+          const existingCoffeeIndex = getCoffeeIndex(action.payload.coffee.id);
 
-          draft.totalItems = draft.coffeeList.reduce((acc, cur) => {
-            acc += cur.quantity;
-            return acc;
-          }, 0);
+          draft.coffeeList[existingCoffeeIndex].quantity +=
+            action.payload.coffee.quantity;
+
+          if (draft.coffeeList[existingCoffeeIndex].quantity <= 0) {
+            draft.coffeeList.splice(existingCoffeeIndex, 1);
+          }
+
+          updateTotals(draft);
+        }
+      });
+    case ActionType.RemoveCoffeeFromCart:
+      return produce(state, (draft) => {
+        if (action.payload) {
+          const existingCoffeeIndex = getCoffeeIndex(action.payload.coffee.id);
+
+          draft.coffeeList.splice(existingCoffeeIndex, 1);
+          updateTotals(draft);
         }
       });
 

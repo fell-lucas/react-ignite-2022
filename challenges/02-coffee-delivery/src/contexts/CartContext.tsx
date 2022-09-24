@@ -4,6 +4,8 @@ import { ActionType, cartReducer, CartState, CoffeeWithQuantity } from '../reduc
 interface CartContextData {
   cartState: CartState;
   addCoffeeToCart: (coffee: CoffeeWithQuantity) => void;
+  updateCoffeeQuantity: (coffee: CoffeeWithQuantity) => void;
+  removeCoffeeFromCart: (coffee: CoffeeWithQuantity) => void;
 }
 
 const cartContextInitialValues: CartContextData = {
@@ -13,6 +15,8 @@ const cartContextInitialValues: CartContextData = {
     totalItems: 0,
   },
   addCoffeeToCart: () => null,
+  updateCoffeeQuantity: () => null,
+  removeCoffeeFromCart: () => null,
 };
 
 export const CartContext = createContext<CartContextData>(cartContextInitialValues);
@@ -32,8 +36,26 @@ export function CartProvider({ children }: PropsWithChildren) {
     });
   }
 
+  function updateCoffeeQuantity(coffee: CoffeeWithQuantity) {
+    dispatch({
+      type: ActionType.UpdateCoffeeQuantity,
+      payload: {
+        coffee,
+      },
+    });
+  }
+
+  function removeCoffeeFromCart(coffee: CoffeeWithQuantity) {
+    dispatch({
+      type: ActionType.RemoveCoffeeFromCart,
+      payload: {
+        coffee,
+      },
+    });
+  }
+
   const cartContextValue = useMemo<CartContextData>(
-    () => ({ cartState, addCoffeeToCart }),
+    () => ({ cartState, addCoffeeToCart, updateCoffeeQuantity, removeCoffeeFromCart }),
     [cartState],
   );
 

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import { CartContext } from '../../contexts';
 import {
   CheckoutAddress,
@@ -6,7 +7,14 @@ import {
   CheckoutConfirm,
   CheckoutPaymentMethods,
 } from './components';
-import { CheckoutContainer, LeftContainer, RightContainer, SectionTitle } from './styles';
+import {
+  CheckoutConfirmButton,
+  CheckoutContainer,
+  CheckoutNoItems,
+  LeftContainer,
+  RightContainer,
+  SectionTitle,
+} from './styles';
 
 export function Checkout() {
   const { cartState } = useContext(CartContext);
@@ -24,14 +32,24 @@ export function Checkout() {
       </div>
       <div>
         <SectionTitle>Cafés selecionados</SectionTitle>
-        {cartState.totalItems > 0 && (
-          <RightContainer>
-            {cartState.coffeeList.map((coffee) => (
-              <CheckoutCartItem coffee={coffee} key={coffee.id} />
-            ))}
-            <CheckoutConfirm />
-          </RightContainer>
-        )}
+        <RightContainer>
+          {cartState.totalItems > 0 ? (
+            <>
+              {cartState.coffeeList.map((coffee) => (
+                <CheckoutCartItem coffee={coffee} key={coffee.id} />
+              ))}
+              <CheckoutConfirm />
+            </>
+          ) : (
+            <CheckoutNoItems>Nenhum item no carrinho 😥</CheckoutNoItems>
+          )}
+
+          <NavLink to="/success">
+            <CheckoutConfirmButton disabled={cartState.totalItems <= 0} type="button">
+              Confirmar pedido
+            </CheckoutConfirmButton>
+          </NavLink>
+        </RightContainer>
       </div>
     </CheckoutContainer>
   );

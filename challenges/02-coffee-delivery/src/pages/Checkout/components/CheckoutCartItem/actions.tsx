@@ -10,20 +10,23 @@ interface SelectedItemActionsProps {
 }
 
 export function SelectedItemActions({ coffee }: SelectedItemActionsProps) {
-  const { addCoffeeToCart } = useContext(CartContext);
+  const { updateCoffeeQuantity, removeCoffeeFromCart } = useContext(CartContext);
 
-  const updateQuantity = useCallback(
+  const handleUpdateQuantity = useCallback(
     (newQuantity: number) => {
-      addCoffeeToCart({ ...coffee, quantity: newQuantity });
+      updateCoffeeQuantity({ ...coffee, quantity: newQuantity });
     },
-    [addCoffeeToCart, coffee],
+    [coffee, updateCoffeeQuantity],
   );
-  console.log(coffee.quantity);
+
+  const handleRemoveCoffee = useCallback(() => {
+    removeCoffeeFromCart({ ...coffee, quantity: 0 });
+  }, [coffee, removeCoffeeFromCart]);
 
   return (
     <div>
-      <QuantityInput quantity={coffee.quantity} updateQuantity={updateQuantity} />
-      <RemoveButton>
+      <QuantityInput quantity={coffee.quantity} updateQuantity={handleUpdateQuantity} />
+      <RemoveButton onClick={handleRemoveCoffee}>
         <Trash size={16} />
         <p>Remover</p>
       </RemoveButton>

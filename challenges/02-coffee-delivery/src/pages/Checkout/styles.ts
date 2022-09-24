@@ -51,3 +51,33 @@ export const RightContainer = styled.div`
   background: ${(props) => props.theme.colors.baseCard};
   margin-top: 15px;
 `;
+
+export const CheckoutConfirmButton = styled.button`
+  background-color: ${(props) => props.theme.colors.brandYellow};
+  padding: 12px 8px;
+  width: 100%;
+  text-transform: uppercase;
+  color: ${(props) => props.theme.colors.baseWhite};
+  border-radius: 6px;
+  border: none;
+  margin-top: 24px;
+  cursor: pointer;
+
+  font-size: ${(props) => props.theme.typography.componentsButtonG};
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.brandYellowDark};
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.brandYellowLight};
+    color: ${(props) => props.theme.colors.brandYellow};
+    cursor: not-allowed;
+  }
+`;
+
+export const CheckoutNoItems = styled.h4`
+  white-space: nowrap;
+  color: ${(props) => props.theme.colors.baseSubtitle};
+  font-size: ${(props) => props.theme.typography.textRegularM};
+`;
