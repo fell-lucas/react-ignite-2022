@@ -6,22 +6,29 @@ export enum ActionTypes {
   INTERRUPT_CURRENT_CYCLE,
 }
 
-export function addNewCycleAction(newCycle: Cycle) {
+export interface Action {
+  type: ActionTypes
+  payload?: {
+    cycle: Cycle
+  }
+}
+
+export function addNewCycleAction(newCycle: Cycle): Action {
   return {
     type: ActionTypes.ADD_NEW_CYCLE,
     payload: {
-      newCycle,
+      cycle: newCycle,
     },
   }
 }
 
-export function finishCurrentCycleAction() {
+export function finishCurrentCycleAction(): Action {
   return {
     type: ActionTypes.FINISH_CURRENT_CYCLE,
   }
 }
 
-export function interruptCurrentCycleAction() {
+export function interruptCurrentCycleAction(): Action {
   return {
     type: ActionTypes.INTERRUPT_CURRENT_CYCLE,
   }
