@@ -2,15 +2,7 @@ import { CatalogContainer, CatalogFilter, CatalogHeader, CatalogTitle } from './
 import { useEffect, useState } from 'react';
 
 import { Card } from '../Card';
-
-export interface Coffee {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  categories: string[];
-}
+import { Coffee } from '../../../../reducers';
 
 export function Catalog() {
   const [coffeeList, setCoffeeList] = useState<Coffee[]>([]);
