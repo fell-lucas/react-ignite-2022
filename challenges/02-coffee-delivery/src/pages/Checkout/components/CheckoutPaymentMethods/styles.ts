@@ -2,14 +2,20 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { BaseIconButton } from '../../../../styles/shared';
 
-export const PaymentMethodButton = styled(BaseIconButton)`
+interface PaymentMethodButtonProps {
+  selected: boolean;
+}
+
+export const PaymentMethodButton = styled(BaseIconButton)<PaymentMethodButtonProps>`
   padding: 16px;
   border: 1px solid transparent;
 
-  &:focus {
-    background-color: ${(props) => props.theme.colors.brandPurpleLight};
-    border: solid 1px ${(props) => props.theme.colors.brandPurple};
-  }
+  ${(props) =>
+    props.selected &&
+    `
+    background-color: ${props.theme.colors.brandPurpleLight};
+    border: solid 1px ${props.theme.colors.brandPurple};
+  `}
 `;
 
 export const PaymentMethodsContainer = styled.div`

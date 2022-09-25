@@ -11,6 +11,12 @@ export interface Coffee {
   categories: string[];
 }
 
+export enum PaymentMethods {
+  Credit = 'Cartão de crédito',
+  Debit = 'Cartão de débito',
+  Cash = 'Dinheiro',
+}
+
 export interface CoffeeWithQuantity extends Coffee {
   quantity: number;
 }
@@ -19,6 +25,7 @@ export interface CartState {
   coffeeList: CoffeeWithQuantity[];
   totalPrice: number;
   totalItems: number;
+  paymentMethod?: PaymentMethods;
 }
 
 export function cartReducer(state: CartState, action: Action): CartState {
@@ -40,7 +47,7 @@ export function cartReducer(state: CartState, action: Action): CartState {
   switch (action.type) {
     case ActionType.AddCoffeeToCart:
       return produce(state, (draft) => {
-        if (action.payload && action.payload.coffee.quantity > 0) {
+        if (action.payload?.coffee && action.payload.coffee.quantity > 0) {
           const existingCoffeeIndex = getCoffeeIndex(action.payload.coffee.id);
 
           if (existingCoffeeIndex !== -1) {
@@ -55,7 +62,7 @@ export function cartReducer(state: CartState, action: Action): CartState {
       });
     case ActionType.UpdateCoffeeQuantity:
       return produce(state, (draft) => {
-        if (action.payload) {
+        if (action.payload?.coffee) {
           const existingCoffeeIndex = getCoffeeIndex(action.payload.coffee.id);
 
           draft.coffeeList[existingCoffeeIndex].quantity +=
@@ -70,11 +77,17 @@ export function cartReducer(state: CartState, action: Action): CartState {
       });
     case ActionType.RemoveCoffeeFromCart:
       return produce(state, (draft) => {
-        if (action.payload) {
+        if (action.payload?.coffee) {
           const existingCoffeeIndex = getCoffeeIndex(action.payload.coffee.id);
 
           draft.coffeeList.splice(existingCoffeeIndex, 1);
           updateTotals(draft);
+        }
+      });
+    case ActionType.UpdatePaymentMethod:
+      return produce(state, (draft) => {
+        if (action.payload?.paymentMethod) {
+          draft.paymentMethod = action.payload.paymentMethod;
         }
       });
 

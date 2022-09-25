@@ -1,9 +1,14 @@
 import { CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react';
+import { useContext } from 'react';
+import { CartContext } from '../../../../contexts';
+import { PaymentMethods } from '../../../../reducers';
 import { defaultTheme } from '../../../../styles/themes';
 import { LeftTitleContainer } from '../../styles';
 import { PaymentMethodButton, PaymentMethodsContainer } from './styles';
 
 export function CheckoutPaymentMethods() {
+  const { cartState, updatePaymentMethod } = useContext(CartContext);
+
   return (
     <>
       <LeftTitleContainer>
@@ -14,15 +19,27 @@ export function CheckoutPaymentMethods() {
         </div>
       </LeftTitleContainer>
       <PaymentMethodsContainer>
-        <PaymentMethodButton type="button">
+        <PaymentMethodButton
+          onClick={() => updatePaymentMethod(PaymentMethods.Credit)}
+          selected={cartState.paymentMethod === PaymentMethods.Credit}
+          type="button"
+        >
           <CreditCard size={16} />
           <p>Cartão de crédito</p>
         </PaymentMethodButton>
-        <PaymentMethodButton type="button">
+        <PaymentMethodButton
+          onClick={() => updatePaymentMethod(PaymentMethods.Debit)}
+          selected={cartState.paymentMethod === PaymentMethods.Debit}
+          type="button"
+        >
           <Bank size={16} />
           <p>Cartão de débito</p>
         </PaymentMethodButton>
-        <PaymentMethodButton type="button">
+        <PaymentMethodButton
+          onClick={() => updatePaymentMethod(PaymentMethods.Cash)}
+          selected={cartState.paymentMethod === PaymentMethods.Cash}
+          type="button"
+        >
           <Money size={16} />
           <p>Dinheiro</p>
         </PaymentMethodButton>

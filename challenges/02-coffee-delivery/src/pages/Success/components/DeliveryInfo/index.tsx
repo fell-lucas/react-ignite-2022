@@ -1,8 +1,12 @@
 import { MapPin, Timer, CurrencyDollar } from 'phosphor-react';
+import { useContext } from 'react';
+import { CartContext } from '../../../../contexts';
 import { defaultTheme } from '../../../../styles/themes';
 import { DeliveryInfoContainer, DeliveryInfoItem, IconCircle } from './styles';
 
 export function DeliveryInfo() {
+  const { cartState } = useContext(CartContext);
+
   return (
     <DeliveryInfoContainer>
       <DeliveryInfoItem>
@@ -28,7 +32,7 @@ export function DeliveryInfo() {
           <CurrencyDollar size={16} />
         </IconCircle>
         <p>
-          Pagamento na entrega <br /> <b>Cartão de crédito</b>
+          Pagamento na entrega <br /> <b>{cartState.paymentMethod}</b>
         </p>
       </DeliveryInfoItem>
     </DeliveryInfoContainer>
