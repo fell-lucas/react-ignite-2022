@@ -76,8 +76,12 @@ export const CheckoutConfirmButton = styled.button`
   }
 `;
 
-export const CheckoutNoItems = styled.h4`
-  white-space: nowrap;
-  color: ${(props) => props.theme.colors.baseSubtitle};
-  font-size: ${(props) => props.theme.typography.textRegularM};
+export const CheckoutNoItemsButton = styled(CheckoutConfirmButton)`
+  margin: 0;
+  background-color: ${(props) => props.theme.colors.brandPurple};
+  max-width: 400px;
+  margin-top: 15px;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.brandPurpleDark};
+  }
 `;

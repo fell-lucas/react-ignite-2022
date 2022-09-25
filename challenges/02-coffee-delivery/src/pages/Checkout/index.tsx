@@ -10,7 +10,7 @@ import {
 import {
   CheckoutConfirmButton,
   CheckoutContainer,
-  CheckoutNoItems,
+  CheckoutNoItemsButton,
   LeftContainer,
   RightContainer,
   SectionTitle,
@@ -21,36 +21,43 @@ export function Checkout() {
 
   return (
     <CheckoutContainer>
-      <div>
-        <SectionTitle>Complete seu pedido</SectionTitle>
-        <LeftContainer>
-          <CheckoutAddress />
-        </LeftContainer>
-        <LeftContainer>
-          <CheckoutPaymentMethods />
-        </LeftContainer>
-      </div>
-      <div>
-        <SectionTitle>Cafés selecionados</SectionTitle>
-        <RightContainer>
-          {cartState.totalItems > 0 ? (
-            <>
-              {cartState.coffeeList.map((coffee) => (
-                <CheckoutCartItem coffee={coffee} key={coffee.id} />
-              ))}
-              <CheckoutConfirm />
-            </>
-          ) : (
-            <CheckoutNoItems>Nenhum item no carrinho 😥</CheckoutNoItems>
-          )}
+      {cartState.totalItems > 0 ? (
+        <>
+          <div>
+            <SectionTitle>Complete seu pedido</SectionTitle>
+            <LeftContainer>
+              <CheckoutAddress />
+            </LeftContainer>
+            <LeftContainer>
+              <CheckoutPaymentMethods />
+            </LeftContainer>
+          </div>
+          <div>
+            <SectionTitle>Cafés selecionados</SectionTitle>
+            <RightContainer>
+              <>
+                {cartState.coffeeList.map((coffee) => (
+                  <CheckoutCartItem coffee={coffee} key={coffee.id} />
+                ))}
+                <CheckoutConfirm />
+              </>
 
-          <NavLink to="/success">
-            <CheckoutConfirmButton disabled={cartState.totalItems <= 0} type="button">
-              Confirmar pedido
-            </CheckoutConfirmButton>
+              <NavLink to="/success">
+                <CheckoutConfirmButton disabled={cartState.totalItems <= 0} type="button">
+                  Confirmar pedido
+                </CheckoutConfirmButton>
+              </NavLink>
+            </RightContainer>
+          </div>
+        </>
+      ) : (
+        <div style={{ width: '100vw' }}>
+          <SectionTitle>Você não possui nenhum item no carrinho 😥</SectionTitle>
+          <NavLink to="/">
+            <CheckoutNoItemsButton>Voltar e adicionar mais itens</CheckoutNoItemsButton>
           </NavLink>
-        </RightContainer>
-      </div>
+        </div>
+      )}
     </CheckoutContainer>
   );
 }
