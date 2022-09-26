@@ -6,7 +6,10 @@
     "price": 9.90,
     "image": "expresso.png",
     "categories": [
-      "Tradicional"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      }
     ]
   },
   {
@@ -16,7 +19,10 @@
     "price": 9.90,
     "image": "americano.png",
     "categories": [
-      "Tradicional"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      }
     ]
   },
   {
@@ -26,7 +32,10 @@
     "price": 9.90,
     "image": "expresso-cremoso.png",
     "categories": [
-      "Tradicional"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      }
     ]
   },
   {
@@ -36,8 +45,14 @@
     "price": 9.90,
     "image": "cafe-gelado.png",
     "categories": [
-      "Tradicional",
-      "Gelado"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      },
+      {
+        "id": 1,
+        "name": "Gelado"
+      }
     ]
   },
   {
@@ -47,8 +62,14 @@
     "price": 9.90,
     "image": "cafe-com-leite.png",
     "categories": [
-      "Tradicional",
-      "Com leite"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      },
+      {
+        "id": 2,
+        "name": "Com leite"
+      }
     ]
   },
   {
@@ -58,8 +79,14 @@
     "price": 9.90,
     "image": "latte.png",
     "categories": [
-      "Tradicional",
-      "Com leite"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      },
+      {
+        "id": 2,
+        "name": "Com leite"
+      }
     ]
   },
   {
@@ -69,8 +96,14 @@
     "price": 9.90,
     "image": "capuccino.png",
     "categories": [
-      "Tradicional",
-      "Com leite"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      },
+      {
+        "id": 2,
+        "name": "Com leite"
+      }
     ]
   },
   {
@@ -80,8 +113,14 @@
     "price": 9.90,
     "image": "macchiato.png",
     "categories": [
-      "Tradicional",
-      "Com leite"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      },
+      {
+        "id": 2,
+        "name": "Com leite"
+      }
     ]
   },
   {
@@ -91,8 +130,14 @@
     "price": 9.90,
     "image": "mocaccino.png",
     "categories": [
-      "Tradicional",
-      "Com leite"
+      {
+        "id": 0,
+        "name": "Tradicional"
+      },
+      {
+        "id": 2,
+        "name": "Com leite"
+      }
     ]
   },
   {
@@ -102,8 +147,14 @@
     "price": 9.90,
     "image": "chocolate-quente.png",
     "categories": [
-      "Especial",
-      "Com leite"
+      {
+        "id": 3,
+        "name": "Especial"
+      },
+      {
+        "id": 2,
+        "name": "Com leite"
+      }
     ]
   },
   {
@@ -113,9 +164,18 @@
     "price": 9.90,
     "image": "cubano.png",
     "categories": [
-      "Especial",
-      "Alcoólico",
-      "Gelado"
+      {
+        "id": 3,
+        "name": "Especial"
+      },
+      {
+        "id": 4,
+        "name": "Alcoólico"
+      },
+      {
+        "id": 1,
+        "name": "Gelado"
+      }
     ]
   },
   {
@@ -125,7 +185,10 @@
     "price": 9.90,
     "image": "havaiano.png",
     "categories": [
-      "Especial"
+      {
+        "id": 3,
+        "name": "Especial"
+      }
     ]
   },
   {
@@ -135,7 +198,10 @@
     "price": 9.90,
     "image": "arabe.png",
     "categories": [
-      "Especial"
+      {
+        "id": 3,
+        "name": "Especial"
+      }
     ]
   },
   {
@@ -145,8 +211,14 @@
     "price": 9.90,
     "image": "irlandes.png",
     "categories": [
-      "Especial",
-      "Alcoólico"
+      {
+        "id": 3,
+        "name": "Especial"
+      },
+      {
+        "id": 4,
+        "name": "Alcoólico"
+      }
     ]
   }
 ]

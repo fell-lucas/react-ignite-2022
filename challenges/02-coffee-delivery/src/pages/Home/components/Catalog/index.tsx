@@ -1,37 +1,108 @@
 import { CatalogContainer, CatalogFilter, CatalogHeader, CatalogTitle } from './styles';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { Card } from '../Card';
 import { Coffee } from '../../../../reducers';
+import produce from 'immer';
+
+enum CoffeeCategories {
+  Traditional,
+  Iced,
+  WithMilk,
+  Special,
+  Alcoholic,
+}
+
+const coffeeList = await fetch('./coffee-list.json')
+  .then((r) => r.json())
+  .then((data: Coffee[]) => data);
 
 export function Catalog() {
-  const [coffeeList, setCoffeeList] = useState<Coffee[]>([]);
+  const [filteredCoffeeList, setFilteredCoffeeList] = useState<Coffee[]>([]);
+  const [activeFilters, setActiveFilters] = useState<Set<CoffeeCategories>>(new Set());
 
   useEffect(() => {
-    async function fetchCoffees() {
-      const response = await fetch('./coffee-list.json');
-      const coffees = (await response.json()) as Coffee[];
-
-      setCoffeeList(coffees);
-    }
-
-    void fetchCoffees();
+    setFilteredCoffeeList(coffeeList);
   }, []);
+
+  const handleUpdateActiveFilters = useCallback(
+    (filter: CoffeeCategories) => {
+      if (activeFilters.has(filter)) {
+        setActiveFilters(
+          produce((draft) => {
+            draft.delete(filter);
+          }),
+        );
+      } else {
+        setActiveFilters(
+          produce((draft) => {
+            draft.add(filter);
+          }),
+        );
+      }
+    },
+    [activeFilters],
+  );
+
+  useEffect(() => {
+    if (activeFilters.size > 0) {
+      setFilteredCoffeeList(
+        produce(coffeeList, (draft) => {
+          return draft.filter((coffee) => {
+            const categoryMatches = [];
+            const categoryIds = coffee.categories.reduce<number[]>((acc, cur) => {
+              acc.push(cur.id);
+              return acc;
+            }, []);
+            for (const filter of activeFilters) {
+              categoryMatches.push(categoryIds.includes(filter));
+            }
+            return !categoryMatches.includes(false);
+          });
+        }),
+      );
+    }
+  }, [activeFilters]);
 
   return (
     <div>
       <CatalogHeader>
         <CatalogTitle>Nossos cafés</CatalogTitle>
         <div>
-          <CatalogFilter>Tradicional</CatalogFilter>
-          <CatalogFilter>Especial</CatalogFilter>
-          <CatalogFilter>Com leite</CatalogFilter>
-          <CatalogFilter>Alcoólico</CatalogFilter>
-          <CatalogFilter>Gelado</CatalogFilter>
+          <CatalogFilter
+            onClick={() => handleUpdateActiveFilters(CoffeeCategories.Traditional)}
+            selected={activeFilters.has(CoffeeCategories.Traditional)}
+          >
+            Tradicional
+          </CatalogFilter>
+          <CatalogFilter
+            onClick={() => handleUpdateActiveFilters(CoffeeCategories.Special)}
+            selected={activeFilters.has(CoffeeCategories.Special)}
+          >
+            Especial
+          </CatalogFilter>
+          <CatalogFilter
+            onClick={() => handleUpdateActiveFilters(CoffeeCategories.WithMilk)}
+            selected={activeFilters.has(CoffeeCategories.WithMilk)}
+          >
+            Com leite
+          </CatalogFilter>
+          <CatalogFilter
+            onClick={() => handleUpdateActiveFilters(CoffeeCategories.Alcoholic)}
+            selected={activeFilters.has(CoffeeCategories.Alcoholic)}
+          >
+            Alcoólico
+          </CatalogFilter>
+          <CatalogFilter
+            onClick={() => handleUpdateActiveFilters(CoffeeCategories.Iced)}
+            selected={activeFilters.has(CoffeeCategories.Iced)}
+          >
+            Gelado
+          </CatalogFilter>
         </div>
       </CatalogHeader>
       <CatalogContainer>
-        {coffeeList.map((coffee) => (
+        {filteredCoffeeList.map((coffee) => (
           <Card coffee={coffee} key={coffee.id} />
         ))}
       </CatalogContainer>

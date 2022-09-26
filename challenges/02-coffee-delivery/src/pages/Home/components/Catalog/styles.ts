@@ -23,7 +23,7 @@ export const CatalogTitle = styled.h1`
   color: ${(props) => props.theme.colors.baseSubtitle};
 `;
 
-export const CatalogFilter = styled.button`
+export const CatalogFilter = styled.button<{ selected: boolean }>`
   color: ${(props) => props.theme.colors.brandYellowDark};
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
@@ -38,6 +38,13 @@ export const CatalogFilter = styled.button`
   &:hover {
     background: ${(props) => props.theme.colors.brandYellowLight};
   }
+
+  ${(props) =>
+    props.selected &&
+    `
+    color: ${props.theme.colors.brandYellowLight} !important;
+    background: ${props.theme.colors.brandYellowDark} !important;
+  `}
 `;
 
 export const CatalogContainer = styled.div`

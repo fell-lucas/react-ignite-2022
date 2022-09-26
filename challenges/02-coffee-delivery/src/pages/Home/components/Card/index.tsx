@@ -20,7 +20,7 @@ export function Card({ coffee }: CatalogCardProps) {
       <CardImage alt={coffee.name} src={`./coffee-images/${coffee.image}`} />
       <CardCategoryContainer>
         {coffee.categories.map((category) => (
-          <CardCategory key={category}>{category}</CardCategory>
+          <CardCategory key={category.name}>{category.name}</CardCategory>
         ))}
       </CardCategoryContainer>
       <CardName>{coffee.name}</CardName>

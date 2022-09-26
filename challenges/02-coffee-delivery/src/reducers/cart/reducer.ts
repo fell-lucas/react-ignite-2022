@@ -8,7 +8,10 @@ export interface Coffee {
   description: string;
   price: number;
   image: string;
-  categories: string[];
+  categories: {
+    id: number;
+    name: string;
+  }[];
 }
 
 export interface CoffeeWithQuantity extends Coffee {
