@@ -3,12 +3,15 @@ import media from 'styled-media-query';
 
 export const CheckoutContainer = styled.div`
   display: flex;
-  gap: 32px;
   margin-top: 40px;
 
-  ${media.lessThan('large')`
-    flex-direction: column;
-  `}
+  & > form {
+    display: flex;
+    gap: 32px;
+    ${media.lessThan('large')`
+      flex-direction: column;
+    `}
+  }
 `;
 
 export const LeftContainer = styled.div`

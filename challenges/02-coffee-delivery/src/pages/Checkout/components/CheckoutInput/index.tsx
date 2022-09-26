@@ -1,4 +1,6 @@
-import { DetailedHTMLProps, useRef, useState } from 'react';
+import { DetailedHTMLProps, useCallback, useState } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
+import { NewOrderSubmitType } from '../..';
 import { defaultTheme } from '../../../../styles/themes';
 import { BaseInput } from './styles';
 
@@ -9,18 +11,19 @@ interface CheckoutInput
   > {
   optional?: boolean;
   gridColumn: string;
+  register: UseFormRegisterReturn<keyof NewOrderSubmitType>;
 }
 
 export function CheckoutInput({
   optional,
   gridColumn,
   children,
+  register,
   ...rest
 }: CheckoutInput) {
-  const ref = useRef<HTMLInputElement | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = () => setIsFocused(!isFocused);
+  const handleFocus = useCallback(() => setIsFocused((state) => !state), []);
 
   return (
     <BaseInput
@@ -31,7 +34,7 @@ export function CheckoutInput({
           : defaultTheme.colors.baseButton,
       }}
     >
-      <input onBlur={handleFocus} onFocus={handleFocus} ref={ref} {...rest} />
+      <input {...rest} {...register} onBlur={handleFocus} onFocus={handleFocus} />
       {children}
       {optional && <p>Opcional</p>}
     </BaseInput>

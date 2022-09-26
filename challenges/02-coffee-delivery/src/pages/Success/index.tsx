@@ -1,8 +1,20 @@
 import { DeliveryInfo } from './components';
 import { SuccessMainContainer, SuccessSubtitle, SuccessTitle } from './styles';
 import SuccessDriver from '../../assets/success-driver.svg';
+import { useContext, useEffect } from 'react';
+import { CartContext } from '../../contexts';
+import { useNavigate } from 'react-router-dom';
 
 export function Success() {
+  const { cartState } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!cartState.paymentMethod) {
+      navigate('/', { replace: true });
+    }
+  }, [cartState, navigate]);
+
   return (
     <>
       <div>

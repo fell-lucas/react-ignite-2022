@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@fell-lucas/eslint-config': ^1.0.1
+  '@hookform/resolvers': ^2.9.8
   '@types/node': ^18.7.20
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
@@ -12,23 +13,28 @@ specifiers:
   phosphor-react: ^1.4.1
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-hook-form: ^7.36.1
   react-is: ^18.2.0
   react-router-dom: ^6.4.1
   styled-components: ^5.3.5
   styled-media-query: ^2.1.2
   typescript: ^4.8.3
   vite: ^3.1.3
+  zod: ^3.19.1
 
 dependencies:
+  '@hookform/resolvers': 2.9.8_react-hook-form@7.36.1
   '@types/styled-components': 5.1.26
   immer: 9.0.15
   phosphor-react: 1.4.1_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.36.1_react@18.2.0
   react-is: 18.2.0
   react-router-dom: 6.4.1_biqbaboplfbrettd7655fr4n2y
   styled-components: 5.3.5_7i5myeigehqah43i5u7wbekgba
   styled-media-query: 2.1.2_styled-components@5.3.5
+  zod: 3.19.1
 
 devDependencies:
   '@fell-lucas/eslint-config': 1.0.1_irgkl5vooow2ydyo6aokmferha
@@ -408,6 +414,14 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
     dev: true
+
+  /@hookform/resolvers/2.9.8_react-hook-form@7.36.1:
+    resolution: {integrity: sha512-iVVjH0USq+1TqDdGkWe2M1x7Wn5OFPgVRo7CbWFsXTqqXqCaZtZcnzJu+UhljCWbthFWxWGXKLGYUDPZ04oVvQ==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.36.1_react@18.2.0
+    dev: false
 
   /@humanwhocodes/config-array/0.10.5:
     resolution: {integrity: sha512-XVVDtp+dVvRxMoxSiSfasYaG02VEe1qH5cKgMQJWhol6HwzbcqoCMJi8dAGoYAO57jhUyhI6cWuRiTcRaDaYug==}
@@ -2389,6 +2403,15 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-hook-form/7.36.1_react@18.2.0:
+    resolution: {integrity: sha512-EbYYkCG2p8ywe7ikOH2l02lAFMrrrslZi1I8fqd8ifDGNAkhomHZQzQsP6ksvzrWBKntRe8b5L5L7Zsd+Gm02Q==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -2836,3 +2859,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.19.1:
+    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
+    dev: false

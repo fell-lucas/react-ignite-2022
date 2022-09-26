@@ -1,5 +1,6 @@
 import { CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react';
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
+import { useFormContext } from 'react-hook-form';
 import { CartContext } from '../../../../contexts';
 import { PaymentMethods } from '../../../../reducers';
 import { defaultTheme } from '../../../../styles/themes';
@@ -8,6 +9,19 @@ import { PaymentMethodButton, PaymentMethodsContainer } from './styles';
 
 export function CheckoutPaymentMethods() {
   const { cartState, updatePaymentMethod } = useContext(CartContext);
+  const { setValue } = useFormContext();
+
+  const handleUpdatePaymentMethod = useCallback(
+    (paymentMethod: PaymentMethods) => {
+      updatePaymentMethod(paymentMethod);
+      setValue('paymentMethod', paymentMethod, {
+        shouldTouch: true,
+        shouldValidate: true,
+        shouldDirty: true,
+      });
+    },
+    [setValue, updatePaymentMethod],
+  );
 
   return (
     <>
@@ -20,7 +34,7 @@ export function CheckoutPaymentMethods() {
       </LeftTitleContainer>
       <PaymentMethodsContainer>
         <PaymentMethodButton
-          onClick={() => updatePaymentMethod(PaymentMethods.Credit)}
+          onClick={() => handleUpdatePaymentMethod(PaymentMethods.Credit)}
           selected={cartState.paymentMethod === PaymentMethods.Credit}
           type="button"
         >
@@ -28,7 +42,7 @@ export function CheckoutPaymentMethods() {
           <p>Cartão de crédito</p>
         </PaymentMethodButton>
         <PaymentMethodButton
-          onClick={() => updatePaymentMethod(PaymentMethods.Debit)}
+          onClick={() => handleUpdatePaymentMethod(PaymentMethods.Debit)}
           selected={cartState.paymentMethod === PaymentMethods.Debit}
           type="button"
         >
@@ -36,7 +50,7 @@ export function CheckoutPaymentMethods() {
           <p>Cartão de débito</p>
         </PaymentMethodButton>
         <PaymentMethodButton
-          onClick={() => updatePaymentMethod(PaymentMethods.Cash)}
+          onClick={() => handleUpdatePaymentMethod(PaymentMethods.Cash)}
           selected={cartState.paymentMethod === PaymentMethods.Cash}
           type="button"
         >
