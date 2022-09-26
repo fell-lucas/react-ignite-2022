@@ -12,10 +12,11 @@ import {
   CheckoutConfirmButton,
   CheckoutContainer,
   CheckoutNoItemsButton,
+  CheckoutNoItemsContainer,
   LeftContainer,
   RightContainer,
-  SectionTitle,
 } from './styles';
+import { SectionTitle } from '../../styles/shared';
 
 export function Checkout() {
   const { cartState } = useContext(CartContext);
@@ -63,12 +64,12 @@ export function Checkout() {
           </div>
         </form>
       ) : (
-        <div style={{ width: '100vw' }}>
+        <CheckoutNoItemsContainer>
           <SectionTitle>Você não possui nenhum item no carrinho 😥</SectionTitle>
           <NavLink to="/">
             <CheckoutNoItemsButton>Voltar e adicionar mais itens</CheckoutNoItemsButton>
           </NavLink>
-        </div>
+        </CheckoutNoItemsContainer>
       )}
     </CheckoutContainer>
   );

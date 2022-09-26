@@ -24,13 +24,6 @@ export const LeftContainer = styled.div`
   margin-top: 15px;
 `;
 
-export const SectionTitle = styled.h3`
-  font-weight: 700;
-  font-family: 'Baloo 2';
-  line-height: 130%;
-  font-size: ${(props) => props.theme.typography.titleXs};
-`;
-
 export const LeftTitleContainer = styled.div`
   display: flex;
   gap: 12px;
@@ -87,4 +80,13 @@ export const CheckoutNoItemsButton = styled(CheckoutConfirmButton)`
   &:hover {
     background-color: ${(props) => props.theme.colors.brandPurpleDark};
   }
+`;
+
+export const CheckoutNoItemsContainer = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 `;

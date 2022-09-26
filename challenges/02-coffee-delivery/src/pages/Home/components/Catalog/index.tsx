@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Card } from '../Card';
 import { Coffee } from '../../../../reducers';
 import produce from 'immer';
+import { EmptyFilter } from '../EmptyFilter';
 
 enum CoffeeCategories {
   Traditional,
@@ -13,17 +14,22 @@ enum CoffeeCategories {
   Alcoholic,
 }
 
-const coffeeList = await fetch('./coffee-list.json')
-  .then((r) => r.json())
-  .then((data: Coffee[]) => data);
-
 export function Catalog() {
   // TODO: use useReducer instead of two useStates
+  const [initialCoffeeList, setInitialCoffeeList] = useState<Coffee[]>([]);
   const [filteredCoffeeList, setFilteredCoffeeList] = useState<Coffee[]>([]);
   const [activeFilters, setActiveFilters] = useState<Set<CoffeeCategories>>(new Set());
 
   useEffect(() => {
-    setFilteredCoffeeList(coffeeList);
+    async function getInitialCoffeeList() {
+      await fetch('./coffee-list.json')
+        .then((r) => r.json())
+        .then((data: Coffee[]) => {
+          setInitialCoffeeList(data);
+          setFilteredCoffeeList(data);
+        });
+    }
+    void getInitialCoffeeList();
   }, []);
 
   const handleUpdateActiveFilters = useCallback(
@@ -47,7 +53,7 @@ export function Catalog() {
 
   useEffect(() => {
     setFilteredCoffeeList(
-      produce(coffeeList, (draft) => {
+      produce(initialCoffeeList, (draft) => {
         return draft.filter((coffee) => {
           const categoryMatches = [];
           const categoryIds = coffee.categories.reduce<number[]>((acc, cur) => {
@@ -61,7 +67,7 @@ export function Catalog() {
         });
       }),
     );
-  }, [activeFilters]);
+  }, [activeFilters, initialCoffeeList]);
 
   return (
     <div>
@@ -100,11 +106,15 @@ export function Catalog() {
           </CatalogFilter>
         </div>
       </CatalogHeader>
-      <CatalogContainer>
-        {filteredCoffeeList.map((coffee) => (
-          <Card coffee={coffee} key={coffee.id} />
-        ))}
-      </CatalogContainer>
+      {filteredCoffeeList.length > 0 ? (
+        <CatalogContainer>
+          {filteredCoffeeList.map((coffee) => (
+            <Card coffee={coffee} key={coffee.id} />
+          ))}
+        </CatalogContainer>
+      ) : (
+        <EmptyFilter />
+      )}
     </div>
   );
 }
