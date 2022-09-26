@@ -18,6 +18,7 @@ const coffeeList = await fetch('./coffee-list.json')
   .then((data: Coffee[]) => data);
 
 export function Catalog() {
+  // TODO: use useReducer instead of two useStates
   const [filteredCoffeeList, setFilteredCoffeeList] = useState<Coffee[]>([]);
   const [activeFilters, setActiveFilters] = useState<Set<CoffeeCategories>>(new Set());
 
