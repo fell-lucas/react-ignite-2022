@@ -1,12 +1,21 @@
 import { MapPin, Timer, CurrencyDollar } from 'phosphor-react';
-import { useContext } from 'react';
-import { CartContext } from '../../../../contexts';
+import { PaymentMethods } from '../../../../reducers';
 import { defaultTheme } from '../../../../styles/themes';
 import { DeliveryInfoContainer, DeliveryInfoItem, IconCircle } from './styles';
 
-export function DeliveryInfo() {
-  const { cartState } = useContext(CartContext);
+interface DeliveryInfoProps {
+  road: string;
+  paymentMethod: PaymentMethods;
+  city: string;
+  neighborhood: string;
+}
 
+export function DeliveryInfo({
+  city,
+  neighborhood,
+  paymentMethod,
+  road,
+}: DeliveryInfoProps) {
   return (
     <DeliveryInfoContainer>
       <DeliveryInfoItem>
@@ -14,9 +23,9 @@ export function DeliveryInfo() {
           <MapPin size={16} weight="fill" />
         </IconCircle>
         <p>
-          Entrega em <b>Alguma Rua, 123</b>
+          Entrega em <b>{road}</b>
           <br />
-          Algum Bairro - Alguma Cidade, 🌍
+          {neighborhood} - {city}, 🌍
         </p>
       </DeliveryInfoItem>
       <DeliveryInfoItem>
@@ -32,7 +41,7 @@ export function DeliveryInfo() {
           <CurrencyDollar size={16} />
         </IconCircle>
         <p>
-          Pagamento na entrega <br /> <b>{cartState.paymentMethod}</b>
+          Pagamento na entrega <br /> <b>{paymentMethod}</b>
         </p>
       </DeliveryInfoItem>
     </DeliveryInfoContainer>

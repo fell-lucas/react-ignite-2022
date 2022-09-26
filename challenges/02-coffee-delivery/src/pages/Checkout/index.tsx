@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { z } from 'zod';
 import { CartContext } from '../../contexts';
+import { NewOrderSubmitType } from '../../forms/checkout';
 import {
   CheckoutAddress,
   CheckoutCartItem,
@@ -17,46 +17,15 @@ import {
   RightContainer,
   SectionTitle,
 } from './styles';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { PaymentMethods } from '../../reducers';
-
-const newOrderSubmitFormSchema = z.object({
-  zipCode: z.number().positive(),
-  road: z.string().min(2),
-  houseNumber: z.number().positive(),
-  complement: z.string().nullable(),
-  neighborhood: z.string().min(2),
-  city: z.string().min(2),
-  regionCode: z.string().length(2),
-  paymentMethod: z.nativeEnum(PaymentMethods),
-});
-
-export type NewOrderSubmitType = z.infer<typeof newOrderSubmitFormSchema>;
 
 export function Checkout() {
   const { cartState } = useContext(CartContext);
   const navigate = useNavigate();
-  const newOrderForm = useForm<NewOrderSubmitType>({
-    resolver: zodResolver(newOrderSubmitFormSchema),
-    defaultValues: {
-      city: '',
-      complement: '',
-      houseNumber: undefined,
-      neighborhood: '',
-      regionCode: '',
-      road: '',
-      zipCode: undefined,
-      paymentMethod: undefined,
-    },
-    mode: 'onChange',
-  });
+  const newOrderForm = useFormContext<NewOrderSubmitType>();
 
-  const { formState, handleSubmit, reset } = newOrderForm;
+  const { formState, handleSubmit } = newOrderForm;
 
-  function handleNewOrderSubmit(data: NewOrderSubmitType) {
-    console.log(data);
-
-    reset();
+  function handleNewOrderSubmit() {
     navigate('/success', { replace: true });
   }
 
@@ -67,14 +36,13 @@ export function Checkout() {
         <form onSubmit={handleSubmit(handleNewOrderSubmit)}>
           <div>
             <SectionTitle>Complete seu pedido</SectionTitle>
-            <FormProvider {...newOrderForm}>
-              <LeftContainer>
-                <CheckoutAddress />
-              </LeftContainer>
-              <LeftContainer>
-                <CheckoutPaymentMethods />
-              </LeftContainer>
-            </FormProvider>
+
+            <LeftContainer>
+              <CheckoutAddress />
+            </LeftContainer>
+            <LeftContainer>
+              <CheckoutPaymentMethods />
+            </LeftContainer>
           </div>
           <div>
             <SectionTitle>Cafés selecionados</SectionTitle>

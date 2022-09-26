@@ -1,19 +1,22 @@
 import { DeliveryInfo } from './components';
 import { SuccessMainContainer, SuccessSubtitle, SuccessTitle } from './styles';
 import SuccessDriver from '../../assets/success-driver.svg';
-import { useContext, useEffect } from 'react';
-import { CartContext } from '../../contexts';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFormContext } from 'react-hook-form';
+import { NewOrderSubmitType } from '../../forms/checkout';
 
 export function Success() {
-  const { cartState } = useContext(CartContext);
+  const { formState, getValues } = useFormContext<NewOrderSubmitType>();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!cartState.paymentMethod) {
+    if (!formState.isDirty || !formState.isValid) {
       navigate('/', { replace: true });
     }
-  }, [cartState, navigate]);
+  }, [formState, navigate]);
+
+  const deliveryInfo = getValues();
 
   return (
     <>
@@ -24,7 +27,7 @@ export function Success() {
         </SuccessSubtitle>
       </div>
       <SuccessMainContainer>
-        <DeliveryInfo />
+        <DeliveryInfo {...deliveryInfo} />
         <img
           alt="Ilustração de homem dirigindo lambreta levando consigo o café"
           src={SuccessDriver}
