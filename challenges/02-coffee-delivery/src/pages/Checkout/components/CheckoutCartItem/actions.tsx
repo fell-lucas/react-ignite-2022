@@ -26,7 +26,7 @@ export function SelectedItemActions({ coffee }: SelectedItemActionsProps) {
   return (
     <div>
       <QuantityInput quantity={coffee.quantity} updateQuantity={handleUpdateQuantity} />
-      <RemoveButton onClick={handleRemoveCoffee}>
+      <RemoveButton onClick={handleRemoveCoffee} type="button">
         <Trash size={16} />
         <p>Remover</p>
       </RemoveButton>

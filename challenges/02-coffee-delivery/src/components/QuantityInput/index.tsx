@@ -13,11 +13,11 @@ export function QuantityInput({ quantity, updateQuantity }: QuantityInputProps) 
 
   return (
     <CardQtyContainer>
-      <CardQtyButton onClick={handleDecreaseQuantity}>
+      <CardQtyButton onClick={handleDecreaseQuantity} type="button">
         <Minus size={14} weight="bold" />
       </CardQtyButton>
       <p>{quantity}</p>
-      <CardQtyButton onClick={handleIncreaseQuantity}>
+      <CardQtyButton onClick={handleIncreaseQuantity} type="button">
         <Plus size={14} weight="bold" />
       </CardQtyButton>
     </CardQtyContainer>
