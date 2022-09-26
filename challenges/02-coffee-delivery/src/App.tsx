@@ -1,7 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { CartProvider } from './contexts';
-import { CheckoutFormProvider } from './forms/checkout';
+import { CartProvider, CheckoutFormProvider } from './contexts';
 import { router } from './Router';
 import { GlobalStyle } from './styles';
 import { defaultTheme } from './styles/themes';

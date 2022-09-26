@@ -11,12 +11,6 @@ export interface Coffee {
   categories: string[];
 }
 
-export enum PaymentMethods {
-  Credit = 'Cartão de crédito',
-  Debit = 'Cartão de débito',
-  Cash = 'Dinheiro',
-}
-
 export interface CoffeeWithQuantity extends Coffee {
   quantity: number;
 }
@@ -25,7 +19,6 @@ export interface CartState {
   coffeeList: CoffeeWithQuantity[];
   totalPrice: number;
   totalItems: number;
-  paymentMethod?: PaymentMethods;
 }
 
 export function cartReducer(state: CartState, action: Action): CartState {
@@ -82,12 +75,6 @@ export function cartReducer(state: CartState, action: Action): CartState {
 
           draft.coffeeList.splice(existingCoffeeIndex, 1);
           updateTotals(draft);
-        }
-      });
-    case ActionType.UpdatePaymentMethod:
-      return produce(state, (draft) => {
-        if (action.payload?.paymentMethod) {
-          draft.paymentMethod = action.payload.paymentMethod;
         }
       });
 

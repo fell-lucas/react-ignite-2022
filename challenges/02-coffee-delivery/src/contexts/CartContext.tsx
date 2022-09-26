@@ -1,18 +1,11 @@
-import { createContext, PropsWithChildren, useMemo, useReducer } from 'react';
-import {
-  ActionType,
-  cartReducer,
-  CartState,
-  CoffeeWithQuantity,
-  PaymentMethods,
-} from '../reducers';
+import { createContext, PropsWithChildren, useEffect, useMemo, useReducer } from 'react';
+import { ActionType, cartReducer, CartState, CoffeeWithQuantity } from '../reducers';
 
 interface CartContextData {
   cartState: CartState;
   addCoffeeToCart: (coffee: CoffeeWithQuantity) => void;
   updateCoffeeQuantity: (coffee: CoffeeWithQuantity) => void;
   removeCoffeeFromCart: (coffee: CoffeeWithQuantity) => void;
-  updatePaymentMethod: (paymentMethod: PaymentMethods) => void;
 }
 
 const cartContextInitialValues: CartContextData = {
@@ -24,16 +17,27 @@ const cartContextInitialValues: CartContextData = {
   addCoffeeToCart: () => null,
   updateCoffeeQuantity: () => null,
   removeCoffeeFromCart: () => null,
-  updatePaymentMethod: () => null,
 };
 
 export const CartContext = createContext<CartContextData>(cartContextInitialValues);
+
+const LS_CART_STATE_KEY = '@coffee-delivery:cart-state:1.0.0';
 
 export function CartProvider({ children }: PropsWithChildren) {
   const [cartState, dispatch] = useReducer(
     cartReducer,
     cartContextInitialValues.cartState,
+    readStateFromStorage,
   );
+
+  function readStateFromStorage(): CartState {
+    const lsString = localStorage.getItem(LS_CART_STATE_KEY);
+
+    if (lsString) {
+      return JSON.parse(lsString) as CartState;
+    }
+    return cartContextInitialValues.cartState;
+  }
 
   function addCoffeeToCart(coffee: CoffeeWithQuantity) {
     dispatch({
@@ -62,25 +66,19 @@ export function CartProvider({ children }: PropsWithChildren) {
     });
   }
 
-  function updatePaymentMethod(paymentMethod: PaymentMethods) {
-    dispatch({
-      type: ActionType.UpdatePaymentMethod,
-      payload: {
-        paymentMethod,
-      },
-    });
-  }
-
   const cartContextValue = useMemo<CartContextData>(
     () => ({
       cartState,
       addCoffeeToCart,
       updateCoffeeQuantity,
       removeCoffeeFromCart,
-      updatePaymentMethod,
     }),
     [cartState],
   );
+
+  useEffect(() => {
+    localStorage.setItem(LS_CART_STATE_KEY, JSON.stringify(cartState));
+  }, [cartState]);
 
   return <CartContext.Provider value={cartContextValue}>{children}</CartContext.Provider>;
 }

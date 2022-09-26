@@ -1,22 +1,23 @@
 import { DeliveryInfo } from './components';
 import { SuccessMainContainer, SuccessSubtitle, SuccessTitle } from './styles';
 import SuccessDriver from '../../assets/success-driver.svg';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormContext } from 'react-hook-form';
-import { NewOrderSubmitType } from '../../forms/checkout';
+import { NewOrderSubmitType } from '../../contexts';
 
 export function Success() {
-  const { formState, getValues } = useFormContext<NewOrderSubmitType>();
+  const { getValues, reset } = useFormContext<NewOrderSubmitType>();
   const navigate = useNavigate();
 
+  const deliveryInfo = useMemo(() => getValues(), [getValues]);
+
   useEffect(() => {
-    if (!formState.isDirty || !formState.isValid) {
+    if (!deliveryInfo.city) {
       navigate('/', { replace: true });
     }
-  }, [formState, navigate]);
-
-  const deliveryInfo = getValues();
+    return () => reset();
+  }, [reset, deliveryInfo, navigate]);
 
   return (
     <>
@@ -28,10 +29,7 @@ export function Success() {
       </div>
       <SuccessMainContainer>
         <DeliveryInfo {...deliveryInfo} />
-        <img
-          alt="Ilustração de homem dirigindo lambreta levando consigo o café"
-          src={SuccessDriver}
-        />
+        <img alt="Homem dirigindo lambreta levando consigo o café" src={SuccessDriver} />
       </SuccessMainContainer>
     </>
   );

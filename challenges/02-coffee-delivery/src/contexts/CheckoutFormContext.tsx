@@ -2,7 +2,12 @@ import { PropsWithChildren } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PaymentMethods } from '../../reducers';
+
+export enum PaymentMethods {
+  Credit = 'Cartão de crédito',
+  Debit = 'Cartão de débito',
+  Cash = 'Dinheiro',
+}
 
 const newOrderSubmitFormSchema = z.object({
   zipCode: z.number().positive(),
@@ -32,5 +37,6 @@ export function CheckoutFormProvider({ children }: PropsWithChildren) {
     },
     mode: 'onChange',
   });
+
   return <FormProvider {...newOrderForm}>{children}</FormProvider>;
 }

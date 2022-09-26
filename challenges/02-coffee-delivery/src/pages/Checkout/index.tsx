@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { CartContext } from '../../contexts';
-import { NewOrderSubmitType } from '../../forms/checkout';
+import { CartContext, NewOrderSubmitType } from '../../contexts';
 import {
   CheckoutAddress,
   CheckoutCartItem,

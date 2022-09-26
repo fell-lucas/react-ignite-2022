@@ -1,5 +1,5 @@
 import { MapPin, Timer, CurrencyDollar } from 'phosphor-react';
-import { PaymentMethods } from '../../../../reducers';
+import { PaymentMethods } from '../../../../contexts';
 import { defaultTheme } from '../../../../styles/themes';
 import { DeliveryInfoContainer, DeliveryInfoItem, IconCircle } from './styles';
 
