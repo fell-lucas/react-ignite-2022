@@ -10,7 +10,7 @@ export function CheckoutInputGrid() {
       <CheckoutInput
         gridColumn="1 / span 3"
         placeholder="CEP"
-        register={register('zipCode', { valueAsNumber: true })}
+        register={register('zipCode')}
       />
       <CheckoutInput
         gridColumn="1 / span 9"
@@ -20,7 +20,7 @@ export function CheckoutInputGrid() {
       <CheckoutInput
         gridColumn="1 / span 3"
         placeholder="Número"
-        register={register('houseNumber', { valueAsNumber: true })}
+        register={register('houseNumber')}
       />
       <CheckoutInput
         gridColumn="4 / span 6"

@@ -1,13 +1,14 @@
 import { DeliveryInfo } from './components';
 import { SuccessMainContainer, SuccessSubtitle, SuccessTitle } from './styles';
 import SuccessDriver from '../../assets/success-driver.svg';
-import { useEffect, useMemo } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormContext } from 'react-hook-form';
-import { NewOrderSubmitType } from '../../contexts';
+import { CartContext, NewOrderSubmitType } from '../../contexts';
 
 export function Success() {
   const { getValues, reset } = useFormContext<NewOrderSubmitType>();
+  const { cartState, removeCoffeeFromCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const deliveryInfo = useMemo(() => getValues(), [getValues]);
@@ -16,8 +17,11 @@ export function Success() {
     if (!deliveryInfo.city) {
       navigate('/', { replace: true });
     }
-    return () => reset();
-  }, [reset, deliveryInfo, navigate]);
+    return () => {
+      reset();
+      cartState.coffeeList.forEach(removeCoffeeFromCart);
+    };
+  }, [reset, deliveryInfo, navigate, cartState, removeCoffeeFromCart]);
 
   return (
     <>

@@ -10,9 +10,15 @@ export enum PaymentMethods {
 }
 
 const newOrderSubmitFormSchema = z.object({
-  zipCode: z.number().positive(),
+  zipCode: z.string().refine((val) => {
+    const num = Number(val);
+    return num > 0 && Number.isInteger(num);
+  }),
   road: z.string().min(2),
-  houseNumber: z.number().positive(),
+  houseNumber: z.string().refine((val) => {
+    const num = Number(val);
+    return num > 0 && Number.isInteger(num);
+  }),
   complement: z.string().nullable(),
   neighborhood: z.string().min(2),
   city: z.string().min(2),
@@ -28,11 +34,11 @@ export function CheckoutFormProvider({ children }: PropsWithChildren) {
     defaultValues: {
       city: '',
       complement: '',
-      houseNumber: undefined,
+      houseNumber: '',
       neighborhood: '',
       regionCode: '',
       road: '',
-      zipCode: undefined,
+      zipCode: '',
       paymentMethod: undefined,
     },
     mode: 'onChange',

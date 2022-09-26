@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, useCallback, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { NewOrderSubmitType } from '../..';
+import { NewOrderSubmitType } from '../../../../contexts';
 import { defaultTheme } from '../../../../styles/themes';
 import { BaseInput } from './styles';
 
