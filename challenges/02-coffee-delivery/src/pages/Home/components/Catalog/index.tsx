@@ -45,23 +45,21 @@ export function Catalog() {
   );
 
   useEffect(() => {
-    if (activeFilters.size > 0) {
-      setFilteredCoffeeList(
-        produce(coffeeList, (draft) => {
-          return draft.filter((coffee) => {
-            const categoryMatches = [];
-            const categoryIds = coffee.categories.reduce<number[]>((acc, cur) => {
-              acc.push(cur.id);
-              return acc;
-            }, []);
-            for (const filter of activeFilters) {
-              categoryMatches.push(categoryIds.includes(filter));
-            }
-            return !categoryMatches.includes(false);
-          });
-        }),
-      );
-    }
+    setFilteredCoffeeList(
+      produce(coffeeList, (draft) => {
+        return draft.filter((coffee) => {
+          const categoryMatches = [];
+          const categoryIds = coffee.categories.reduce<number[]>((acc, cur) => {
+            acc.push(cur.id);
+            return acc;
+          }, []);
+          for (const filter of activeFilters) {
+            categoryMatches.push(categoryIds.includes(filter));
+          }
+          return !categoryMatches.includes(false);
+        });
+      }),
+    );
   }, [activeFilters]);
 
   return (
