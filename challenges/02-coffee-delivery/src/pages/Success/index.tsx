@@ -5,11 +5,13 @@ import { useContext, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormContext } from 'react-hook-form';
 import { CartContext, NewOrderSubmitType } from '../../contexts';
+import { useTranslation } from 'react-i18next';
 
 export function Success() {
   const { getValues, reset } = useFormContext<NewOrderSubmitType>();
   const { cartState, removeCoffeeFromCart } = useContext(CartContext);
   const navigate = useNavigate();
+  const { t } = useTranslation('success');
 
   const deliveryInfo = useMemo(() => getValues(), [getValues]);
 
@@ -26,14 +28,12 @@ export function Success() {
   return (
     <>
       <div>
-        <SuccessTitle>Uhu! Pedido confirmado</SuccessTitle>
-        <SuccessSubtitle>
-          Agora é só aguardar que logo o café chegará até você
-        </SuccessSubtitle>
+        <SuccessTitle>{t('title')}</SuccessTitle>
+        <SuccessSubtitle>{t('subtitle')}</SuccessSubtitle>
       </div>
       <SuccessMainContainer>
         <DeliveryInfo {...deliveryInfo} />
-        <img alt="Homem dirigindo lambreta levando consigo o café" src={SuccessDriver} />
+        <img alt={t('img-alt')} src={SuccessDriver} />
       </SuccessMainContainer>
     </>
   );

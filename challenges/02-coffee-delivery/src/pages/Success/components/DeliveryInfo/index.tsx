@@ -1,4 +1,5 @@
 import { MapPin, Timer, CurrencyDollar } from 'phosphor-react';
+import { useTranslation } from 'react-i18next';
 import { PaymentMethods } from '../../../../contexts';
 import { defaultTheme } from '../../../../styles/themes';
 import { DeliveryInfoContainer, DeliveryInfoItem, IconCircle } from './styles';
@@ -16,6 +17,8 @@ export function DeliveryInfo({
   paymentMethod,
   road,
 }: DeliveryInfoProps) {
+  const { t } = useTranslation('success');
+
   return (
     <DeliveryInfoContainer>
       <DeliveryInfoItem>
@@ -23,7 +26,7 @@ export function DeliveryInfo({
           <MapPin size={16} weight="fill" />
         </IconCircle>
         <p>
-          Entrega em <b>{road}</b>
+          {t('delivery-in')} <b>{road}</b>
           <br />
           {neighborhood} - {city}, 🌍
         </p>
@@ -33,7 +36,7 @@ export function DeliveryInfo({
           <Timer size={16} weight="fill" />
         </IconCircle>
         <p>
-          Previsão de entrega <br /> <b>20 min - 30 min</b>
+          {t('delivery-time')} <br /> <b>20 min - 30 min</b>
         </p>
       </DeliveryInfoItem>
       <DeliveryInfoItem>
@@ -41,7 +44,7 @@ export function DeliveryInfo({
           <CurrencyDollar size={16} />
         </IconCircle>
         <p>
-          Pagamento na entrega <br /> <b>{paymentMethod}</b>
+          {t('payment')} <br /> <b>{paymentMethod}</b>
         </p>
       </DeliveryInfoItem>
     </DeliveryInfoContainer>
