@@ -4,7 +4,7 @@ import { QuantityInput } from '../../../../components';
 import { useCallback, useContext, useState } from 'react';
 import { CartContext } from '../../../../contexts';
 import { Coffee } from '../../../../reducers';
-
+import { useTranslation } from 'react-i18next';
 interface CardFooterProps {
   coffee: Coffee;
 }
@@ -12,6 +12,7 @@ interface CardFooterProps {
 export function CardFooter({ coffee }: CardFooterProps) {
   const { addCoffeeToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState<number>(1);
+  const { t, i18n } = useTranslation('layout');
 
   const updateQuantity = useCallback(
     (newQuantity: number) => {
@@ -30,7 +31,13 @@ export function CardFooter({ coffee }: CardFooterProps) {
   return (
     <CardFooterContainer>
       <CardPrice>
-        R$<h2>{coffee.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h2>
+        {t('currency')}
+        <h2>
+          {coffee.price.toLocaleString(i18n.resolvedLanguage, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </h2>
       </CardPrice>
       <div>
         <QuantityInput quantity={quantity} updateQuantity={updateQuantity} />

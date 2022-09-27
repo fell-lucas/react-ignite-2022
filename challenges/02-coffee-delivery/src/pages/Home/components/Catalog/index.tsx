@@ -15,6 +15,8 @@ enum CoffeeCategories {
   Alcoholic,
 }
 
+const DOLLAR_PRICE_IN_BRL = 5.26;
+
 export function Catalog() {
   // TODO: use useReducer instead of two useStates
   const [initialCoffeeList, setInitialCoffeeList] = useState<Coffee[]>([]);
@@ -27,8 +29,13 @@ export function Catalog() {
       await fetch(`./locales/${i18n.resolvedLanguage}/coffee-list.json`)
         .then((r) => r.json())
         .then((data: Coffee[]) => {
-          setInitialCoffeeList(data);
-          setFilteredCoffeeList(data);
+          const dataWithFixedCurrency = data.map((coffee) =>
+            i18n.resolvedLanguage === 'pt-BR'
+              ? coffee
+              : { ...coffee, price: coffee.price / DOLLAR_PRICE_IN_BRL },
+          );
+          setInitialCoffeeList(dataWithFixedCurrency);
+          setFilteredCoffeeList(dataWithFixedCurrency);
         });
     }
     void getInitialCoffeeList();
