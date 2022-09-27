@@ -5,7 +5,8 @@
   "info": {
     "change-language": "Alterar idioma",
     "designed-by": "Design made by",
-    "developed-by": "Developed by"
+    "developed-by": "Developed by",
+    "warning": "Will empty cart. Continue?"
   },
   "currency": "$"
 }

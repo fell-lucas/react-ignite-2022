@@ -1,4 +1,4 @@
-import { CircleWavyQuestion, Translate } from 'phosphor-react';
+import { CircleWavyQuestion, Translate, WarningCircle } from 'phosphor-react';
 import { useCallback, useContext, useRef, useState } from 'react';
 import {
   ChangeLanguageButton,
@@ -12,6 +12,7 @@ import { CartContext } from '../../../../contexts';
 export function ProjectInformation() {
   const containerRef = useRef(null);
   const [selected, setSelected] = useState(false);
+  const [isEmptyCartWarningActive, setIsEmptyCartWarningActive] = useState(true);
   const { t, i18n } = useTranslation('layout');
   const { emptyCart } = useContext(CartContext);
 
@@ -19,14 +20,20 @@ export function ProjectInformation() {
     containerRef,
     () => {
       setSelected(false);
+      setIsEmptyCartWarningActive(true);
     },
     ['mouseup'],
   );
 
   const handleChangeLanguage = useCallback(() => {
-    void i18n.changeLanguage(i18n.language === 'pt-BR' ? 'en' : 'pt-BR');
-    emptyCart();
-  }, [i18n, emptyCart]);
+    if (!isEmptyCartWarningActive) {
+      void i18n.changeLanguage(i18n.language === 'pt-BR' ? 'en' : 'pt-BR');
+      emptyCart();
+      setIsEmptyCartWarningActive(true);
+    } else {
+      setIsEmptyCartWarningActive(false);
+    }
+  }, [i18n, emptyCart, isEmptyCartWarningActive]);
 
   return (
     <>
@@ -34,9 +41,22 @@ export function ProjectInformation() {
         <CircleWavyQuestion size={48} weight="fill" />
       </ProjectInformationButton>
       <ProjectInformationContainer ref={containerRef} show={selected}>
-        <ChangeLanguageButton onClick={handleChangeLanguage} type="button">
-          <Translate size={24} weight="fill" />
-          {t('info.change-language')}
+        <ChangeLanguageButton
+          isWarnActive={isEmptyCartWarningActive}
+          onClick={handleChangeLanguage}
+          type="button"
+        >
+          {isEmptyCartWarningActive ? (
+            <>
+              <Translate size={24} weight="fill" />
+              {t('info.change-language')}
+            </>
+          ) : (
+            <>
+              <WarningCircle size={24} weight="fill" />
+              {t('info.warning')}
+            </>
+          )}
         </ChangeLanguageButton>
         <p>
           {t('info.developed-by')}{' '}

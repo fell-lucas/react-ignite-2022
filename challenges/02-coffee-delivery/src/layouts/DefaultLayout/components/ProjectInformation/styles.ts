@@ -73,12 +73,24 @@ export const ProjectInformationContainer = styled.div<{ show: boolean }>`
   }
 `;
 
-export const ChangeLanguageButton = styled(BaseIconButton)`
+export const ChangeLanguageButton = styled(BaseIconButton)<{ isWarnActive: boolean }>`
   font-size: ${(props) => props.theme.typography.textRegularS};
-  color: ${(props) => props.theme.colors.brandPurple};
-  background: ${(props) => props.theme.colors.brandPurpleLight};
+  color: ${(props) =>
+    !props.isWarnActive
+      ? props.theme.colors.brandYellow
+      : props.theme.colors.brandPurple};
+  background: ${(props) =>
+    !props.isWarnActive
+      ? props.theme.colors.brandYellowLight
+      : props.theme.colors.brandPurpleLight};
   &:hover {
-    color: ${(props) => props.theme.colors.brandPurpleLight};
-    background: ${(props) => props.theme.colors.brandPurpleDark};
+    color: ${(props) =>
+      !props.isWarnActive
+        ? props.theme.colors.brandYellowLight
+        : props.theme.colors.brandPurpleLight};
+    background: ${(props) =>
+      !props.isWarnActive
+        ? props.theme.colors.brandYellowDark
+        : props.theme.colors.brandPurpleDark};
   }
 `;

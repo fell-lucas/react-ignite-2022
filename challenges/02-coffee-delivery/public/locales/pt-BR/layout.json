@@ -5,7 +5,8 @@
   "info": {
     "change-language": "Change language",
     "developed-by": "Desenvolvido por",
-    "designed-by": "Design feito por"
+    "designed-by": "Design feito por",
+    "warning": "Limpará o carrinho. Continuar?"
   },
   "currency": "R$"
 }
