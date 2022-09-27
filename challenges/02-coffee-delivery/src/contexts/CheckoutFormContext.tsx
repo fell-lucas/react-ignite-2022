@@ -14,15 +14,15 @@ const newOrderSubmitFormSchema = z.object({
     const num = Number(val);
     return num > 0 && Number.isInteger(num);
   }),
-  road: z.string().min(2),
+  road: z.string().min(1),
   houseNumber: z.string().refine((val) => {
     const num = Number(val);
     return num > 0 && Number.isInteger(num);
   }),
   complement: z.string().nullable(),
-  neighborhood: z.string().min(2),
-  city: z.string().min(2),
-  regionCode: z.string().length(2),
+  neighborhood: z.string().min(1),
+  city: z.string().min(1),
+  regionCode: z.string().min(1),
   paymentMethod: z.nativeEnum(PaymentMethods),
 });
 
