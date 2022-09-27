@@ -8,5 +8,10 @@
     "designed-by": "Design feito por",
     "warning": "Limpará o carrinho. Continuar?"
   },
-  "currency": "R$"
+  "currency": "R$",
+  "payment-methods": {
+    "credit-card": "Cartão de crédito",
+    "debit-card": "Cartão de débito",
+    "cash": "Dinheiro"
+  }
 }

@@ -8,5 +8,10 @@
     "developed-by": "Developed by",
     "warning": "Will empty cart. Continue?"
   },
-  "currency": "$"
+  "currency": "$",
+  "payment-methods": {
+    "cash": "Cash",
+    "credit-card": "Credit card",
+    "debit-card": "Debit card"
+  }
 }

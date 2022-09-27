@@ -18,6 +18,7 @@ export function DeliveryInfo({
   road,
 }: DeliveryInfoProps) {
   const { t } = useTranslation('success');
+  const { t: l } = useTranslation('layout');
 
   return (
     <DeliveryInfoContainer>
@@ -44,7 +45,7 @@ export function DeliveryInfo({
           <CurrencyDollar size={16} />
         </IconCircle>
         <p>
-          {t('payment')} <br /> <b>{paymentMethod}</b>
+          {t('payment')} <br /> <b>{l(paymentMethod)}</b>
         </p>
       </DeliveryInfoItem>
     </DeliveryInfoContainer>

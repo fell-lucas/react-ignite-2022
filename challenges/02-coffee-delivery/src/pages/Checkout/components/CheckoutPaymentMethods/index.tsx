@@ -10,6 +10,7 @@ import { PaymentMethodButton, PaymentMethodsContainer } from './styles';
 export function CheckoutPaymentMethods() {
   const { setValue, getValues } = useFormContext<NewOrderSubmitType>();
   const { t } = useTranslation('checkout');
+  const { t: l } = useTranslation('layout');
 
   const handleUpdatePaymentMethod = useCallback(
     (paymentMethod: PaymentMethods) => {
@@ -38,7 +39,7 @@ export function CheckoutPaymentMethods() {
           type="button"
         >
           <CreditCard size={16} />
-          <p>{t('personal-info.payment.method.credit-card')}</p>
+          <p>{l('payment-methods.credit-card')}</p>
         </PaymentMethodButton>
         <PaymentMethodButton
           onClick={() => handleUpdatePaymentMethod(PaymentMethods.Debit)}
@@ -46,7 +47,7 @@ export function CheckoutPaymentMethods() {
           type="button"
         >
           <Bank size={16} />
-          <p>{t('personal-info.payment.method.debit-card')}</p>
+          <p>{l('payment-methods.debit-card')}</p>
         </PaymentMethodButton>
         <PaymentMethodButton
           onClick={() => handleUpdatePaymentMethod(PaymentMethods.Cash)}
@@ -54,7 +55,7 @@ export function CheckoutPaymentMethods() {
           type="button"
         >
           <Money size={16} />
-          <p>{t('personal-info.payment.method.cash')}</p>
+          <p>{l('payment-methods.cash')}</p>
         </PaymentMethodButton>
       </PaymentMethodsContainer>
     </>

@@ -4,9 +4,9 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 export enum PaymentMethods {
-  Credit = 'Cartão de crédito',
-  Debit = 'Cartão de débito',
-  Cash = 'Dinheiro',
+  Credit = 'payment-methods.credit-card',
+  Debit = 'payment-methods.debit-card',
+  Cash = 'payment-methods.cash',
 }
 
 const newOrderSubmitFormSchema = z.object({

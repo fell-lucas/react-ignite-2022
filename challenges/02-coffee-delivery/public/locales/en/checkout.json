@@ -29,11 +29,6 @@
       "title": "Delivery address"
     },
     "payment": {
-      "method": {
-        "cash": "Cash",
-        "credit-card": "Credit card",
-        "debit-card": "Debit card"
-      },
       "subtitle": "Payment is made on delivery. Choose how you want to pay",
       "title": "Payment"
     },
