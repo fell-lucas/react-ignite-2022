@@ -1,0 +1,42 @@
+{
+  "personal-info": {
+    "title": "Complete seu pedido",
+    "address": {
+      "title": "Endereço de Entrega",
+      "subtitle": "Informe o endereço onde deseja receber seu pedido",
+      "form": {
+        "zip-code": "CEP",
+        "road": "Rua",
+        "house-number": "Número",
+        "complement": "Complemento",
+        "neighborhood": "Bairro",
+        "city": "Cidade",
+        "region-code": "UF",
+        "optional": "Opcional"
+      }
+    },
+    "payment": {
+      "title": "Pagamento",
+      "subtitle": "O pagamento é feito na entrega. Escolha a forma que deseja pagar",
+      "method": {
+        "credit-card": "Cartão de crédito",
+        "debit-card": "Cartão de débito",
+        "cash": "Dinheiro"
+      }
+    }
+  },
+  "cart": {
+    "title": "Cafés selecionados",
+    "confirm-order": "Confirmar pedido",
+    "footer": {
+      "total-items": "Total de itens",
+      "delivery": "Entrega",
+      "total": "Total"
+    },
+    "remove": "Remover"
+  },
+  "empty-cart": {
+    "title": "Você não possui nenhum item no carrinho 😥",
+    "button": "Voltar e adicionar mais itens"
+  }
+}

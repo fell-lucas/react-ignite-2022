@@ -1,5 +1,6 @@
 import produce from 'immer';
 import { WritableDraft } from 'immer/dist/internal';
+import { LS_CART_STATE_KEY } from '../../contexts';
 import { Action, ActionType } from './actions';
 
 export interface Coffee {
@@ -79,6 +80,12 @@ export function cartReducer(state: CartState, action: Action): CartState {
           draft.coffeeList.splice(existingCoffeeIndex, 1);
           updateTotals(draft);
         }
+      });
+    case ActionType.EmptyCart:
+      return produce(state, (draft) => {
+        localStorage.removeItem(LS_CART_STATE_KEY);
+        draft.coffeeList = [];
+        updateTotals(draft);
       });
 
     default:

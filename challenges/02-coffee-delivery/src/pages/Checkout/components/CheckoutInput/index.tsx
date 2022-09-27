@@ -1,5 +1,6 @@
 import { DetailedHTMLProps, useCallback, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { NewOrderSubmitType } from '../../../../contexts';
 import { defaultTheme } from '../../../../styles/themes';
 import { BaseInput } from './styles';
@@ -22,7 +23,7 @@ export function CheckoutInput({
   ...rest
 }: CheckoutInput) {
   const [isFocused, setIsFocused] = useState(false);
-
+  const { t } = useTranslation('checkout');
   const handleFocus = useCallback(() => setIsFocused((state) => !state), []);
 
   return (
@@ -36,7 +37,7 @@ export function CheckoutInput({
     >
       <input {...rest} {...register} onBlur={handleFocus} onFocus={handleFocus} />
       {children}
-      {optional && <p>Opcional</p>}
+      {optional && <p>{t('personal-info.address.form.optional')}</p>}
     </BaseInput>
   );
 }

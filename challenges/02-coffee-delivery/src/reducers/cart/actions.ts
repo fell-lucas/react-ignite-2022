@@ -4,6 +4,7 @@ export enum ActionType {
   AddCoffeeToCart,
   UpdateCoffeeQuantity,
   RemoveCoffeeFromCart,
+  EmptyCart,
 }
 
 export interface Action {

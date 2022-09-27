@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CoffeeWithQuantity } from '../../../../reducers';
 import { SelectedItemActions } from './actions';
 import { SelectedItem, Separator, SelectedItemActionsContainer } from './styles';
@@ -7,6 +8,8 @@ interface CheckoutCartItemProps {
 }
 
 export function CheckoutCartItem({ coffee }: CheckoutCartItemProps) {
+  const { t, i18n } = useTranslation('layout');
+
   return (
     <>
       <SelectedItem>
@@ -15,7 +18,13 @@ export function CheckoutCartItem({ coffee }: CheckoutCartItemProps) {
           <h3>{coffee.name}</h3>
           <SelectedItemActions coffee={coffee} />
         </SelectedItemActionsContainer>
-        <p>R$ 9,90</p>
+        <p>
+          {t('currency')}
+          {coffee.price.toLocaleString(i18n.resolvedLanguage, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </p>
       </SelectedItem>
       <Separator />
     </>

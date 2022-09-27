@@ -1,6 +1,7 @@
 import { CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react';
 import { useCallback } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { NewOrderSubmitType, PaymentMethods } from '../../../../contexts';
 import { defaultTheme } from '../../../../styles/themes';
 import { LeftTitleContainer } from '../../styles';
@@ -8,6 +9,7 @@ import { PaymentMethodButton, PaymentMethodsContainer } from './styles';
 
 export function CheckoutPaymentMethods() {
   const { setValue, getValues } = useFormContext<NewOrderSubmitType>();
+  const { t } = useTranslation('checkout');
 
   const handleUpdatePaymentMethod = useCallback(
     (paymentMethod: PaymentMethods) => {
@@ -25,8 +27,8 @@ export function CheckoutPaymentMethods() {
       <LeftTitleContainer>
         <CurrencyDollar color={defaultTheme.colors.brandPurple} size={22} />
         <div>
-          <h4>Pagamento</h4>
-          <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
+          <h4>{t('personal-info.payment.title')}</h4>
+          <p>{t('personal-info.payment.subtitle')}</p>
         </div>
       </LeftTitleContainer>
       <PaymentMethodsContainer>
@@ -36,7 +38,7 @@ export function CheckoutPaymentMethods() {
           type="button"
         >
           <CreditCard size={16} />
-          <p>Cartão de crédito</p>
+          <p>{t('personal-info.payment.method.credit-card')}</p>
         </PaymentMethodButton>
         <PaymentMethodButton
           onClick={() => handleUpdatePaymentMethod(PaymentMethods.Debit)}
@@ -44,7 +46,7 @@ export function CheckoutPaymentMethods() {
           type="button"
         >
           <Bank size={16} />
-          <p>Cartão de débito</p>
+          <p>{t('personal-info.payment.method.debit-card')}</p>
         </PaymentMethodButton>
         <PaymentMethodButton
           onClick={() => handleUpdatePaymentMethod(PaymentMethods.Cash)}
@@ -52,7 +54,7 @@ export function CheckoutPaymentMethods() {
           type="button"
         >
           <Money size={16} />
-          <p>Dinheiro</p>
+          <p>{t('personal-info.payment.method.cash')}</p>
         </PaymentMethodButton>
       </PaymentMethodsContainer>
     </>

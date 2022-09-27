@@ -17,11 +17,13 @@ import {
   RightContainer,
 } from './styles';
 import { SectionTitle } from '../../styles/shared';
+import { useTranslation } from 'react-i18next';
 
 export function Checkout() {
   const { cartState } = useContext(CartContext);
   const navigate = useNavigate();
   const newOrderForm = useFormContext<NewOrderSubmitType>();
+  const { t } = useTranslation('checkout');
 
   const { formState, handleSubmit } = newOrderForm;
 
@@ -35,8 +37,7 @@ export function Checkout() {
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         <form onSubmit={handleSubmit(handleNewOrderSubmit)}>
           <div>
-            <SectionTitle>Complete seu pedido</SectionTitle>
-
+            <SectionTitle>{t('personal-info.title')}</SectionTitle>
             <LeftContainer>
               <CheckoutAddress />
             </LeftContainer>
@@ -45,7 +46,7 @@ export function Checkout() {
             </LeftContainer>
           </div>
           <div>
-            <SectionTitle>Cafés selecionados</SectionTitle>
+            <SectionTitle>{t('cart.title')}</SectionTitle>
             <RightContainer>
               <>
                 {cartState.coffeeList.map((coffee) => (
@@ -58,16 +59,16 @@ export function Checkout() {
                 disabled={!formState.isDirty || !formState.isValid}
                 type="submit"
               >
-                Confirmar pedido
+                {t('cart.confirm-order')}
               </CheckoutConfirmButton>
             </RightContainer>
           </div>
         </form>
       ) : (
         <CheckoutNoItemsContainer>
-          <SectionTitle>Você não possui nenhum item no carrinho 😥</SectionTitle>
+          <SectionTitle>{t('empty-cart.title')}</SectionTitle>
           <NavLink to="/">
-            <CheckoutNoItemsButton>Voltar e adicionar mais itens</CheckoutNoItemsButton>
+            <CheckoutNoItemsButton>{t('empty-cart.button')}</CheckoutNoItemsButton>
           </NavLink>
         </CheckoutNoItemsContainer>
       )}

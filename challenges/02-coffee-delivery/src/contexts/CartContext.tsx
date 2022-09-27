@@ -6,6 +6,7 @@ interface CartContextData {
   addCoffeeToCart: (coffee: CoffeeWithQuantity) => void;
   updateCoffeeQuantity: (coffee: CoffeeWithQuantity) => void;
   removeCoffeeFromCart: (coffee: CoffeeWithQuantity) => void;
+  emptyCart: () => void;
 }
 
 const cartContextInitialValues: CartContextData = {
@@ -17,11 +18,12 @@ const cartContextInitialValues: CartContextData = {
   addCoffeeToCart: () => null,
   updateCoffeeQuantity: () => null,
   removeCoffeeFromCart: () => null,
+  emptyCart: () => null,
 };
 
 export const CartContext = createContext<CartContextData>(cartContextInitialValues);
 
-const LS_CART_STATE_KEY = '@coffee-delivery:cart-state:1.0.0';
+export const LS_CART_STATE_KEY = '@coffee-delivery:cart-state:1.0.0';
 
 export function CartProvider({ children }: PropsWithChildren) {
   const [cartState, dispatch] = useReducer(
@@ -66,12 +68,19 @@ export function CartProvider({ children }: PropsWithChildren) {
     });
   }
 
+  function emptyCart() {
+    dispatch({
+      type: ActionType.EmptyCart,
+    });
+  }
+
   const cartContextValue = useMemo<CartContextData>(
     () => ({
       cartState,
       addCoffeeToCart,
       updateCoffeeQuantity,
       removeCoffeeFromCart,
+      emptyCart,
     }),
     [cartState],
   );

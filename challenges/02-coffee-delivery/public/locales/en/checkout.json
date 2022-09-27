@@ -1,0 +1,42 @@
+{
+  "cart": {
+    "confirm-order": "Confirm order",
+    "footer": {
+      "delivery": "Delivery",
+      "total": "Total",
+      "total-items": "Total items"
+    },
+    "remove": "Remove",
+    "title": "Selected coffees"
+  },
+  "empty-cart": {
+    "button": "Go back and add more items",
+    "title": "You don't have any items in your cart 😥"
+  },
+  "personal-info": {
+    "address": {
+      "form": {
+        "city": "City",
+        "complement": "Complement",
+        "house-number": "Number",
+        "neighborhood": "Neighborhood",
+        "optional": "Optional",
+        "region-code": "RC",
+        "road": "Road",
+        "zip-code": "Zip Code"
+      },
+      "subtitle": "Enter the address where you want to receive your order",
+      "title": "Delivery address"
+    },
+    "payment": {
+      "method": {
+        "cash": "Cash",
+        "credit-card": "Credit card",
+        "debit-card": "Debit card"
+      },
+      "subtitle": "Payment is made on delivery. Choose how you want to pay",
+      "title": "Payment"
+    },
+    "title": "Complete your order"
+  }
+}

@@ -15,7 +15,7 @@ enum CoffeeCategories {
   Alcoholic,
 }
 
-const DOLLAR_PRICE_IN_BRL = 5.26;
+const DOLLAR_PRICE_IN_BRL = 5.26; // As of 2022-09-26
 
 export function Catalog() {
   // TODO: use useReducer instead of two useStates

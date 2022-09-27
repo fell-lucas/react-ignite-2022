@@ -1,5 +1,5 @@
 import { CircleWavyQuestion, Translate } from 'phosphor-react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useContext, useRef, useState } from 'react';
 import {
   ChangeLanguageButton,
   ProjectInformationButton,
@@ -7,11 +7,13 @@ import {
 } from './styles';
 import { useClickAway } from 'react-use';
 import { useTranslation } from 'react-i18next';
+import { CartContext } from '../../../../contexts';
 
 export function ProjectInformation() {
   const containerRef = useRef(null);
   const [selected, setSelected] = useState(false);
   const { t, i18n } = useTranslation('layout');
+  const { emptyCart } = useContext(CartContext);
 
   useClickAway(
     containerRef,
@@ -23,7 +25,8 @@ export function ProjectInformation() {
 
   const handleChangeLanguage = useCallback(() => {
     void i18n.changeLanguage(i18n.language === 'pt-BR' ? 'en' : 'pt-BR');
-  }, [i18n]);
+    emptyCart();
+  }, [i18n, emptyCart]);
 
   return (
     <>
