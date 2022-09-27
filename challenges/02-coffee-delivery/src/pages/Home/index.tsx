@@ -1,20 +1,21 @@
 import IntroImage from '../../assets/intro-image.png';
 import { Catalog, IntroList } from './components';
 import { IntroBackground, IntroContainer, Subtitle, Title } from './styles';
+import { useTranslation } from 'react-i18next';
 
 export function Home() {
+  const { t } = useTranslation('home');
+
   return (
     <>
       <IntroBackground />
       <IntroContainer>
         <div>
-          <Title>Encontre o café perfeito para qualquer hora do dia</Title>
-          <Subtitle>
-            Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora
-          </Subtitle>
+          <Title>{t('intro.title')}</Title>
+          <Subtitle>{t('intro.subtitle')}</Subtitle>
           <IntroList />
         </div>
-        <img alt="" src={IntroImage} />
+        <img alt={t('intro.img-alt')} src={IntroImage} />
       </IntroContainer>
       <Catalog />
     </>

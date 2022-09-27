@@ -1,0 +1,22 @@
+{
+  "intro": {
+    "title": "Encontre o café perfeito para qualquer hora do dia",
+    "subtitle": "Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora",
+    "list-1": "Compra simples e segura",
+    "list-2": "Embalagem mantém o café intacto",
+    "list-3": "Entrega rápida e rastreada",
+    "list-4": "O café chega fresquinho até você",
+    "img-alt": "Copo de café com grãos de café na cena"
+  },
+  "catalog": {
+    "empty-filter": "Nenhum resultado encontrado para essa combinação de filtros.",
+    "title": "Nossos cafés",
+    "category": {
+      "traditional": "Tradicional",
+      "special": "Especial",
+      "with-milk": "Com leite",
+      "alcoholic": "Alcoólico",
+      "iced": "Gelado"
+    }
+  }
+}

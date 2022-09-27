@@ -5,6 +5,7 @@ import { CartProvider, CheckoutFormProvider } from './contexts';
 import { router } from './Router';
 import { GlobalStyle } from './styles';
 import { defaultTheme } from './styles/themes';
+import './i18n';
 
 enableMapSet();
 

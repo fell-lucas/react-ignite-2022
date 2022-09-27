@@ -6,9 +6,11 @@ import { CartContext } from '../../contexts';
 import { defaultTheme } from '../../styles/themes';
 import { IconContainer } from '../IconContainer';
 import { CartButton, HeaderContainer } from './styles';
+import { useTranslation } from 'react-i18next';
 
 export function Header() {
   const { cartState } = useContext(CartContext);
+  const { t } = useTranslation('layout');
 
   return (
     <HeaderContainer>
@@ -19,7 +21,7 @@ export function Header() {
         <IconContainer
           bgColor={defaultTheme.colors.brandPurpleLight}
           iconColor={defaultTheme.colors.brandPurple}
-          text="Algum lugar, 🌍"
+          text={t('header.location')}
           textColor={defaultTheme.colors.brandPurpleDark}
         >
           <MapPin size={22} weight="fill" />

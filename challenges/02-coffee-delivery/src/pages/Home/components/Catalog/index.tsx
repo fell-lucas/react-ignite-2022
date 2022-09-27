@@ -5,6 +5,7 @@ import { Card } from '../Card';
 import { Coffee } from '../../../../reducers';
 import produce from 'immer';
 import { EmptyFilter } from '../EmptyFilter';
+import { useTranslation } from 'react-i18next';
 
 enum CoffeeCategories {
   Traditional,
@@ -19,10 +20,11 @@ export function Catalog() {
   const [initialCoffeeList, setInitialCoffeeList] = useState<Coffee[]>([]);
   const [filteredCoffeeList, setFilteredCoffeeList] = useState<Coffee[]>([]);
   const [activeFilters, setActiveFilters] = useState<Set<CoffeeCategories>>(new Set());
+  const { t, i18n } = useTranslation('home');
 
   useEffect(() => {
     async function getInitialCoffeeList() {
-      await fetch('./coffee-list.json')
+      await fetch(`./locales/${i18n.resolvedLanguage}/coffee-list.json`)
         .then((r) => r.json())
         .then((data: Coffee[]) => {
           setInitialCoffeeList(data);
@@ -30,7 +32,7 @@ export function Catalog() {
         });
     }
     void getInitialCoffeeList();
-  }, []);
+  }, [i18n.resolvedLanguage]);
 
   const handleUpdateActiveFilters = useCallback(
     (filter: CoffeeCategories) => {
@@ -72,37 +74,37 @@ export function Catalog() {
   return (
     <div>
       <CatalogHeader>
-        <CatalogTitle>Nossos cafés</CatalogTitle>
+        <CatalogTitle>{t('catalog.title')}</CatalogTitle>
         <div>
           <CatalogFilter
             onClick={() => handleUpdateActiveFilters(CoffeeCategories.Traditional)}
             selected={activeFilters.has(CoffeeCategories.Traditional)}
           >
-            Tradicional
+            {t('catalog.category.traditional')}
           </CatalogFilter>
           <CatalogFilter
             onClick={() => handleUpdateActiveFilters(CoffeeCategories.Special)}
             selected={activeFilters.has(CoffeeCategories.Special)}
           >
-            Especial
+            {t('catalog.category.special')}
           </CatalogFilter>
           <CatalogFilter
             onClick={() => handleUpdateActiveFilters(CoffeeCategories.WithMilk)}
             selected={activeFilters.has(CoffeeCategories.WithMilk)}
           >
-            Com leite
+            {t('catalog.category.with-milk')}
           </CatalogFilter>
           <CatalogFilter
             onClick={() => handleUpdateActiveFilters(CoffeeCategories.Alcoholic)}
             selected={activeFilters.has(CoffeeCategories.Alcoholic)}
           >
-            Alcoólico
+            {t('catalog.category.alcoholic')}
           </CatalogFilter>
           <CatalogFilter
             onClick={() => handleUpdateActiveFilters(CoffeeCategories.Iced)}
             selected={activeFilters.has(CoffeeCategories.Iced)}
           >
-            Gelado
+            {t('catalog.category.iced')}
           </CatalogFilter>
         </div>
       </CatalogHeader>

@@ -1,0 +1,224 @@
+[
+  {
+    "id": "1",
+    "name": "Traditional expresso",
+    "description": "Traditional coffee made with hot water and ground beans",
+    "price": 9.9,
+    "image": "expresso.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "American expresso",
+    "description": "Diluted expresso, less intense than traditional",
+    "price": 9.9,
+    "image": "americano.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Creamy expresso",
+    "description": "Traditional expresso with creamy foam",
+    "price": 9.9,
+    "image": "expresso-cremoso.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Iced expresso",
+    "description": "Drink prepared with expresso coffee and ice cubes",
+    "price": 9.9,
+    "image": "cafe-gelado.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      },
+      {
+        "id": 1,
+        "name": "Iced"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Coffee with milk",
+    "description": "Half traditional expresso and half steamed milk",
+    "price": 9.9,
+    "image": "cafe-com-leite.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      },
+      {
+        "id": 2,
+        "name": "With Milk"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Latte",
+    "description": "A shot of expresso with twice the milk and creamy foam",
+    "price": 9.9,
+    "image": "latte.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      },
+      {
+        "id": 2,
+        "name": "With Milk"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Capuccino",
+    "description": "Cinnamon drink made from equal doses of coffee, milk and foam",
+    "price": 9.9,
+    "image": "capuccino.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      },
+      {
+        "id": 2,
+        "name": "With Milk"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Macchiato",
+    "description": "Expresso mixed with a little bit of hot milk and foam",
+    "price": 9.9,
+    "image": "macchiato.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      },
+      {
+        "id": 2,
+        "name": "With Milk"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Mocaccino",
+    "description": "Expresso coffee with chocolate syrup, some milk and foam",
+    "price": 9.9,
+    "image": "mocaccino.png",
+    "categories": [
+      {
+        "id": 0,
+        "name": "Traditional"
+      },
+      {
+        "id": 2,
+        "name": "With Milk"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Hot chocolate",
+    "description": "Drink made with chocolate dissolved in hot milk and coffee",
+    "price": 9.9,
+    "image": "chocolate-quente.png",
+    "categories": [
+      {
+        "id": 3,
+        "name": "Special"
+      },
+      {
+        "id": 2,
+        "name": "With Milk"
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "name": "Cuban",
+    "description": "Iced expresso drink with rum, cream and mint",
+    "price": 9.9,
+    "image": "cubano.png",
+    "categories": [
+      {
+        "id": 3,
+        "name": "Special"
+      },
+      {
+        "id": 4,
+        "name": "Alcoholic"
+      },
+      {
+        "id": 1,
+        "name": "Iced"
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Hawaiian",
+    "description": "Sweet drink prepared with coffee and coconut milk",
+    "price": 9.9,
+    "image": "havaiano.png",
+    "categories": [
+      {
+        "id": 3,
+        "name": "Special"
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Arabic",
+    "description": "Drink prepared with Arabic coffee beans and spices",
+    "price": 9.9,
+    "image": "arabe.png",
+    "categories": [
+      {
+        "id": 3,
+        "name": "Special"
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "name": "Irish",
+    "description": "Drink made from coffee, Irish whiskey, sugar and whipped cream",
+    "price": 9.9,
+    "image": "irlandes.png",
+    "categories": [
+      {
+        "id": 3,
+        "name": "Special"
+      },
+      {
+        "id": 4,
+        "name": "Alcoholic"
+      }
+    ]
+  }
+]

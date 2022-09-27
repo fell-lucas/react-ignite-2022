@@ -1,12 +1,12 @@
 import { SectionTitle } from '../../../../styles/shared';
 import { EmptyFilterContainer } from './styles';
+import { useTranslation } from 'react-i18next';
 
 export function EmptyFilter() {
+  const { t } = useTranslation('home');
   return (
     <EmptyFilterContainer>
-      <SectionTitle>
-        Nenhum resultado encontrado para essa combinação de filtros.
-      </SectionTitle>
+      <SectionTitle>{t('catalog.empty-filter')}</SectionTitle>
     </EmptyFilterContainer>
   );
 }

@@ -1,0 +1,22 @@
+{
+  "catalog": {
+    "category": {
+      "alcoholic": "Alcoholic",
+      "iced": "Iced",
+      "special": "Special",
+      "traditional": "Traditional",
+      "with-milk": "With milk"
+    },
+    "empty-filter": "No results found for this filter combination.",
+    "title": "Our coffees"
+  },
+  "intro": {
+    "list-1": "Simple and secure purchase",
+    "title": "Find the perfect coffee for any time of day",
+    "subtitle": "With Coffee Delivery you get your coffee wherever you are, anytime",
+    "list-4": "Coffee arrives fresh to you",
+    "img-alt": "Coffee cup with coffee beans in the scene",
+    "list-2": "Packaging keeps the coffee intact",
+    "list-3": "Fast and tracked delivery"
+  }
+}
