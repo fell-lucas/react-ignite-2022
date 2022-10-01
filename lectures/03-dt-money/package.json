@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
+    "@radix-ui/react-dialog": "^1.0.0",
     "@types/styled-components": "^5.1.26",
     "i18next": "^21.9.2",
     "i18next-browser-languagedetector": "^6.1.5",
