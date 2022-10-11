@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fell-lucas/eslint-config': ^1.0.1
+  '@fell-lucas/eslint-config': ^1.0.3
   '@hookform/resolvers': ^2.9.8
   '@radix-ui/react-dialog': ^1.0.0
   '@radix-ui/react-radio-group': ^1.0.0
@@ -52,7 +52,7 @@ dependencies:
   zod: 3.19.1
 
 devDependencies:
-  '@fell-lucas/eslint-config': 1.0.1_irgkl5vooow2ydyo6aokmferha
+  '@fell-lucas/eslint-config': 1.0.3_irgkl5vooow2ydyo6aokmferha
   '@types/node': 18.7.20
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
@@ -402,8 +402,8 @@ packages:
       - supports-color
     dev: true
 
-  /@fell-lucas/eslint-config/1.0.1_irgkl5vooow2ydyo6aokmferha:
-    resolution: {integrity: sha512-0faz4Da6k5PnHs0zoSzL7hOY0VYc3CL9iM0X0ApFEAL3HSjFuS+QYezD409Dt+indd1Z+Hmf0ctGA2+iqGjWIw==}
+  /@fell-lucas/eslint-config/1.0.3_irgkl5vooow2ydyo6aokmferha:
+    resolution: {integrity: sha512-y4R5zZ8S1MqTeUQ4pNoQYmejm/s/TH5hguCr1U00J+32nNbJEOiFkW1gYkXy7R6rbw1/aeByaW9luRWmYrFWDg==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -422,7 +422,6 @@ packages:
       eslint-plugin-prettier: 4.2.1_cabrci5exjdaojcvd6xoxgeowu
       eslint-plugin-react: 7.31.8_eslint@8.23.1
       eslint-plugin-react-hooks: 4.6.0_eslint@8.23.1
-      eslint-plugin-unused-imports: 2.0.0_of2nnyqymyuameo6fhejva33re
       prettier: 2.7.1
       typescript: 4.8.3
     transitivePeerDependencies:
@@ -2152,26 +2151,6 @@ packages:
       resolve: 2.0.0-next.4
       semver: 6.3.0
       string.prototype.matchall: 4.0.7
-    dev: true
-
-  /eslint-plugin-unused-imports/2.0.0_of2nnyqymyuameo6fhejva33re:
-    resolution: {integrity: sha512-3APeS/tQlTrFa167ThtP0Zm0vctjr4M44HMpeg1P4bK6wItarumq0Ma82xorMKdFsWpphQBlRPzw/pxiVELX1A==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      '@typescript-eslint/eslint-plugin': ^5.0.0
-      eslint: ^8.0.0
-    peerDependenciesMeta:
-      '@typescript-eslint/eslint-plugin':
-        optional: true
-    dependencies:
-      '@typescript-eslint/eslint-plugin': 5.38.0_wsb62dxj2oqwgas4kadjymcmry
-      eslint: 8.23.1
-      eslint-rule-composer: 0.3.0
-    dev: true
-
-  /eslint-rule-composer/0.3.0:
-    resolution: {integrity: sha512-bt+Sh8CtDmn2OajxvNO+BX7Wn4CIWMpTRm3MaiKPCQcnnlm0CS2mhui6QaoeQugs+3Kj2ESKEEGJUdVafwhiCg==}
-    engines: {node: '>=4.0.0'}
     dev: true
 
   /eslint-scope/5.1.1:
