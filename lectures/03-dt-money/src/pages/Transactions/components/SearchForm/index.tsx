@@ -3,6 +3,8 @@ import { SearchFormContainer } from './styles';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useContext } from 'react';
+import { TransactionsContext } from '../../../../contexts';
 
 const searchFormSchema = z.object({
   query: z.string(),
@@ -16,14 +18,13 @@ export function SearchForm() {
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<SearchFormInput>({ resolver: zodResolver(searchFormSchema) });
+  const { fetchTransactions } = useContext(TransactionsContext);
 
   async function handleSearchTransactions(data: SearchFormInput) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
+    await fetchTransactions(data.query);
   }
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
       <input placeholder="Busque por transações" type="text" {...register('query')} />
 

@@ -8,13 +8,15 @@
     "mock-server": "json-server mock-server.json -w -d 500 -p 3333",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint ./src --ext=['.ts','.tsx']"
+    "lint": "eslint ./src --ext=['.ts','.tsx']",
+    "format": "eslint ./src --ext=['.ts','.tsx'] --fix"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
     "@radix-ui/react-dialog": "^1.0.0",
     "@radix-ui/react-radio-group": "^1.0.0",
     "@types/styled-components": "^5.1.26",
+    "axios": "^1.1.2",
     "i18next": "^21.9.2",
     "i18next-browser-languagedetector": "^6.1.5",
     "i18next-http-backend": "^1.4.4",

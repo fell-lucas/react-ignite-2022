@@ -1,4 +1,5 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
+import { api } from '../lib/axios';
 
 interface Transaction {
   id: number;
@@ -9,8 +10,12 @@ interface Transaction {
   createdAt: string;
 }
 
+type CreateTransactionData = Omit<Transaction, 'id'>;
+
 interface TransactionContextData {
   transactions: Transaction[];
+  fetchTransactions: (query?: string) => Promise<void>;
+  createTransaction: (data: CreateTransactionData) => Promise<void>;
 }
 
 export const TransactionsContext = createContext({} as TransactionContextData);
@@ -18,18 +23,29 @@ export const TransactionsContext = createContext({} as TransactionContextData);
 export function TransactionsProvider({ children }: React.PropsWithChildren) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  async function loadTransactions() {
-    const response = await fetch('http://localhost:3333/transactions');
-    const data = (await response.json()) as Transaction[];
-    setTransactions(data);
+  async function fetchTransactions(query?: string) {
+    const response = await api.get<Transaction[]>('/transactions', {
+      params: {
+        _sort: 'createdAt',
+        _order: 'desc',
+        q: query,
+      },
+    });
+
+    setTransactions(response.data);
+  }
+
+  async function createTransaction(data: CreateTransactionData) {
+    const response = await api.post<Transaction>('transactions', data);
+    setTransactions((state) => [response.data, ...state]);
   }
 
   useEffect(() => {
-    void loadTransactions();
+    void fetchTransactions();
   }, []);
 
   const contextData: TransactionContextData = useMemo(
-    () => ({ transactions }),
+    () => ({ transactions, fetchTransactions, createTransaction }),
     [transactions],
   );
 
