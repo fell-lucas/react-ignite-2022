@@ -1,0 +1,76 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createdAt": "2022-10-04T21:04:02.440Z"
+    },
+    {
+      "id": 2,
+      "description": "Hambúrguer",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 50,
+      "createdAt": "2022-10-04T21:00:02.440Z"
+    },
+    {
+      "description": "Computador",
+      "price": 5000,
+      "category": "Eletrônicos",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:03:10.846Z",
+      "id": 3
+    },
+    {
+      "description": "Café",
+      "price": 5,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:03:35.494Z",
+      "id": 4
+    },
+    {
+      "description": "Academia",
+      "price": 150,
+      "category": "Saúde",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:05:50.182Z",
+      "id": 5
+    },
+    {
+      "description": "Açaí",
+      "price": 15,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:15:16.167Z",
+      "id": 6
+    },
+    {
+      "description": "Ração de gato",
+      "price": 25,
+      "category": "Pets",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:15:59.630Z",
+      "id": 7
+    },
+    {
+      "description": "Padaria",
+      "price": 55,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:16:14.078Z",
+      "id": 8
+    },
+    {
+      "description": "Steam",
+      "price": 40,
+      "category": "Entretenimento",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:16:46.207Z",
+      "id": 9
+    }
+  ]
+}

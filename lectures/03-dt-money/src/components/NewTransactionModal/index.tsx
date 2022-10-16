@@ -72,7 +72,8 @@ export function NewTransactionModal() {
             control={control}
             name="type"
             render={({ field }) => (
-              <TransactionType onValueChange={field.onChange}>
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+              <TransactionType onValueChange={field.onChange} value={field.value ?? ''}>
                 <TransactionTypeButton value="income" variant="income">
                   <ArrowCircleUp size={24} />
                   Entrada

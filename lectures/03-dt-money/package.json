@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "mock-server": "json-server mock-server.json -w -d 500 -p 3333",
+    "mock-server": "json-server db.json -w -d 500 -p 3333",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint ./src --ext=['.ts','.tsx']",
