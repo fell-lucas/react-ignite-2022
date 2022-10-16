@@ -7,6 +7,7 @@ There are four guided projects and four challenges which the student develops on
 Lectures
 
  * 02 - Pomodoro Timer https://fell-lucas-pomodoro-timer.vercel.app/
+ * 03 - DT Money https://fell-lucas-dt-money.vercel.app/
 
 Challenges
 
