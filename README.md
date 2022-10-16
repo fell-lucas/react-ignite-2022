@@ -8,6 +8,7 @@ Lectures
 
  * 02 - Pomodoro Timer https://fell-lucas-pomodoro-timer.vercel.app/
  * 03 - DT Money https://fell-lucas-dt-money.vercel.app/
+   * Databases: [English](https://github.com/fell-lucas/react-ignite-2022-dt-money-db-en) | [Portuguese](https://github.com/fell-lucas/react-ignite-2022-dt-money-db-pt)
 
 Challenges
 
