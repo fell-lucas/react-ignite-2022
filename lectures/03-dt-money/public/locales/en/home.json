@@ -4,5 +4,12 @@
   "saidas": "Outcomes",
   "total": "Total",
   "busque-por-transacoes": "Search for transactions",
-  "buscar": "Search"
+  "buscar": "Search",
+  "nova-transacao-capitalized": "New Transaction",
+  "descricao": "Description",
+  "preco": "Price",
+  "categoria": "Category",
+  "entrada": "Income",
+  "saida": "Outcome",
+  "cadastrar": "Submit"
 }

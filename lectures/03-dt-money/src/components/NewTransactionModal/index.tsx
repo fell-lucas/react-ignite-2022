@@ -12,6 +12,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TransactionsContext } from '../../contexts';
 import { useContextSelector } from 'use-context-selector';
+import { useTranslation } from 'react-i18next';
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -38,6 +39,8 @@ export function NewTransactionModal() {
     resolver: zodResolver(newTransactionFormSchema),
   });
 
+  const { t } = useTranslation('home');
+
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     await createTransaction({ ...data, createdAt: new Date().toISOString() });
     reset();
@@ -48,25 +51,30 @@ export function NewTransactionModal() {
       <Overlay />
 
       <Content>
-        <Dialog.Title>Nova Transação</Dialog.Title>
+        <Dialog.Title>{t('nova-transacao-capitalized')}</Dialog.Title>
 
         <CloseButton>
           <X size={24} />
         </CloseButton>
         <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
           <input
-            placeholder="Descrição"
+            placeholder={t('descricao')}
             required
             type="text"
             {...register('description')}
           />
           <input
-            placeholder="Preço"
+            placeholder={t('preco')}
             required
             type="number"
             {...register('price', { valueAsNumber: true })}
           />
-          <input placeholder="Categoria" required type="text" {...register('category')} />
+          <input
+            placeholder={t('categoria')}
+            required
+            type="text"
+            {...register('category')}
+          />
 
           <Controller
             control={control}
@@ -76,18 +84,18 @@ export function NewTransactionModal() {
               <TransactionType onValueChange={field.onChange} value={field.value ?? ''}>
                 <TransactionTypeButton value="income" variant="income">
                   <ArrowCircleUp size={24} />
-                  Entrada
+                  {t('entrada')}
                 </TransactionTypeButton>
                 <TransactionTypeButton value="outcome" variant="outcome">
                   <ArrowCircleDown size={24} />
-                  Saída
+                  {t('saida')}
                 </TransactionTypeButton>
               </TransactionType>
             )}
           />
 
           <button disabled={isSubmitting} type="submit">
-            Cadastrar
+            {t('cadastrar')}
           </button>
         </form>
       </Content>

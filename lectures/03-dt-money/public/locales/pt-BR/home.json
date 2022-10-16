@@ -4,5 +4,12 @@
   "saidas": "Saídas",
   "total": "Total",
   "busque-por-transacoes": "Busque por transações",
-  "buscar": "Buscar"
+  "buscar": "Buscar",
+  "nova-transacao-capitalized": "Nova Transação",
+  "descricao": "Descrição",
+  "preco": "Preço",
+  "categoria": "Categoria",
+  "entrada": "Entrada",
+  "saida": "Saída",
+  "cadastrar": "Cadastrar"
 }
