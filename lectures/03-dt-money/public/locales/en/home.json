@@ -1,1 +1,8 @@
-{}
+{
+  "nova-transacao": "New transaction",
+  "entradas": "Incomes",
+  "saidas": "Outcomes",
+  "total": "Total",
+  "busque-por-transacoes": "Search for transactions",
+  "buscar": "Search"
+}

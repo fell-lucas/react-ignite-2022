@@ -1,40 +1,43 @@
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
+import { useTextFormat } from '../../hooks';
 import { useSummary } from '../../hooks/useSummary';
-import { priceFormatter } from '../../utils';
 import { SummaryCard, SummaryContainer } from './styles';
 
 export function Summary() {
   const theme = useTheme();
   const summary = useSummary();
+  const { t } = useTranslation('home');
+  const { price } = useTextFormat();
 
   return (
     <SummaryContainer>
       <SummaryCard>
         <header>
-          <span>Entradas</span>
+          <span>{t('entradas')}</span>
           <ArrowCircleUp color={theme['green-300']} size={32} />
         </header>
 
-        <strong>{priceFormatter.format(summary.income)}</strong>
+        <strong>{price.format(summary.income)}</strong>
       </SummaryCard>
 
       <SummaryCard>
         <header>
-          <span>Saídas</span>
+          <span>{t('saidas')}</span>
           <ArrowCircleDown color={theme['red-300']} size={32} />
         </header>
 
-        <strong>{priceFormatter.format(summary.outcome)}</strong>
+        <strong>{price.format(summary.outcome)}</strong>
       </SummaryCard>
 
       <SummaryCard variant={summary.total < 0 ? 'negative' : 'positive'}>
         <header>
-          <span>Total</span>
+          <span>{t('total')}</span>
           <CurrencyDollar color={theme.white} size={32} />
         </header>
 
-        <strong>{priceFormatter.format(summary.total)}</strong>
+        <strong>{price.format(summary.total)}</strong>
       </SummaryCard>
     </SummaryContainer>
   );

@@ -2,8 +2,11 @@ import { HeaderContainer, HeaderContent, NewTransactionButton } from './styles';
 import * as Dialog from '@radix-ui/react-dialog';
 import logoImg from '../../assets/logo.svg';
 import { NewTransactionModal } from '../NewTransactionModal';
+import { useTranslation } from 'react-i18next';
 
 export function Header() {
+  const { t } = useTranslation('home');
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -11,7 +14,7 @@ export function Header() {
 
         <Dialog.Root>
           <Dialog.Trigger asChild>
-            <NewTransactionButton>Nova transação</NewTransactionButton>
+            <NewTransactionButton>{t('nova-transacao')}</NewTransactionButton>
           </Dialog.Trigger>
           <NewTransactionModal />
         </Dialog.Root>

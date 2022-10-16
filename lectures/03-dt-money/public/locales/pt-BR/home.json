@@ -1,1 +1,8 @@
-{}
+{
+  "nova-transacao": "Nova transação",
+  "entradas": "Entradas",
+  "saidas": "Saídas",
+  "total": "Total",
+  "busque-por-transacoes": "Busque por transações",
+  "buscar": "Buscar"
+}

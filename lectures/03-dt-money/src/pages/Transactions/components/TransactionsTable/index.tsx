@@ -1,6 +1,6 @@
 import { useContextSelector } from 'use-context-selector';
 import { TransactionsContext } from '../../../../contexts';
-import { dateFormatter, priceFormatter } from '../../../../utils';
+import { useTextFormat } from '../../../../hooks';
 import { StyledTransactionsTable, PriceHighlight } from './styles';
 
 export function TransactionsTable() {
@@ -8,6 +8,7 @@ export function TransactionsTable() {
     TransactionsContext,
     (context) => context.transactions,
   );
+  const { price, date } = useTextFormat();
 
   return (
     <StyledTransactionsTable>
@@ -18,11 +19,11 @@ export function TransactionsTable() {
             <td>
               <PriceHighlight variant={t.type}>
                 {t.type === 'outcome' && '- '}
-                {priceFormatter.format(t.price)}
+                {price.format(t.price)}
               </PriceHighlight>
             </td>
             <td>{t.category}</td>
-            <td>{dateFormatter.format(new Date(t.createdAt))}</td>
+            <td>{date.format(new Date(t.createdAt))}</td>
           </tr>
         ))}
       </tbody>
