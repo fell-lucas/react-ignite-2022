@@ -1,0 +1,76 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Website development",
+      "type": "income",
+      "category": "Sale",
+      "price": 2626.64,
+      "createdAt": "2022-10-04T21:04:02.440Z"
+    },
+    {
+      "id": 2,
+      "description": "Hamburger",
+      "type": "outcome",
+      "category": "Food",
+      "price": 9.38,
+      "createdAt": "2022-10-04T21:00:02.440Z"
+    },
+    {
+      "description": "Computer",
+      "price": 938.08,
+      "category": "Electronics",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:03:10.846Z",
+      "id": 3
+    },
+    {
+      "description": "Coffee",
+      "price": 0.93,
+      "category": "Food",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:03:35.494Z",
+      "id": 4
+    },
+    {
+      "description": "Gym",
+      "price": 28.14,
+      "category": "Health",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:05:50.182Z",
+      "id": 5
+    },
+    {
+      "description": "Açaí",
+      "price": 2.81,
+      "category": "Food",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:15:16.167Z",
+      "id": 6
+    },
+    {
+      "description": "Cat food",
+      "price": 4.69,
+      "category": "Pets",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:15:59.630Z",
+      "id": 7
+    },
+    {
+      "description": "Bakery",
+      "price": 10.31,
+      "category": "Food",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:16:14.078Z",
+      "id": 8
+    },
+    {
+      "description": "Steam",
+      "price": 7.50,
+      "category": "Entertainment",
+      "type": "outcome",
+      "createdAt": "2022-10-16T18:16:46.207Z",
+      "id": 9
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { createContext } from 'use-context-selector';
 import { api } from '../lib/axios';
 
@@ -23,6 +24,7 @@ export const TransactionsContext = createContext({} as TransactionContextData);
 
 export function TransactionsProvider({ children }: React.PropsWithChildren) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const { i18n } = useTranslation();
 
   const fetchTransactions = useCallback(async (query?: string) => {
     const response = await api.get<Transaction[]>('/transactions', {
@@ -37,13 +39,13 @@ export function TransactionsProvider({ children }: React.PropsWithChildren) {
   }, []);
 
   const createTransaction = useCallback(async (data: CreateTransactionData) => {
-    const response = await api.post<Transaction>('transactions', data);
+    const response = await api.post<Transaction>('/transactions', data);
     setTransactions((state) => [response.data, ...state]);
   }, []);
 
   useEffect(() => {
     void fetchTransactions();
-  }, [fetchTransactions]);
+  }, [fetchTransactions, i18n.language]);
 
   return (
     <TransactionsContext.Provider

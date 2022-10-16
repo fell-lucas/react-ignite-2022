@@ -2,9 +2,10 @@ import { enableMapSet } from 'immer';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles';
 import { defaultTheme } from './styles/themes';
-import './i18n';
 import { Transactions } from './pages';
 import { TransactionsProvider } from './contexts';
+import { ProjectInformation } from './components';
+import './i18n';
 
 enableMapSet();
 
@@ -13,6 +14,7 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <TransactionsProvider>
         <Transactions />
+        <ProjectInformation />
       </TransactionsProvider>
       <GlobalStyle />
     </ThemeProvider>
