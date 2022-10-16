@@ -55,10 +55,7 @@ export function ProjectInformation() {
           >
             Milena Martins
           </a>{' '}
-          @{' '}
-          <a href="https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate">
-            Figma
-          </a>
+          @ <a href="https://www.figma.com/community/file/1138814493269096792">Figma</a>
         </p>
       </ProjectInformationContainer>
     </>
