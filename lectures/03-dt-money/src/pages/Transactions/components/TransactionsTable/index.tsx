@@ -1,7 +1,16 @@
+import { CalendarBlank, TagSimple } from 'phosphor-react';
+import { useEffect, useState } from 'react';
 import { useContextSelector } from 'use-context-selector';
 import { TransactionsContext } from '../../../../contexts';
 import { useTextFormat } from '../../../../hooks';
-import { StyledTransactionsTable, PriceHighlight } from './styles';
+import {
+  StyledTransactionsTable,
+  PriceHighlight,
+  TransactionsGrid,
+  TransactionsCardFooter,
+} from './styles';
+
+const MEDIUM_WIDTH = 768;
 
 export function TransactionsTable() {
   const transactions = useContextSelector(
@@ -10,7 +19,17 @@ export function TransactionsTable() {
   );
   const { price, date } = useTextFormat();
 
-  return (
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [width]);
+
+  return width > MEDIUM_WIDTH ? (
     <StyledTransactionsTable>
       <tbody>
         {transactions.map((t) => (
@@ -28,5 +47,29 @@ export function TransactionsTable() {
         ))}
       </tbody>
     </StyledTransactionsTable>
+  ) : (
+    <TransactionsGrid>
+      {transactions.map((t) => (
+        <div key={t.id}>
+          <span>{t.description}</span>
+          <h3>
+            <PriceHighlight variant={t.type}>
+              {t.type === 'outcome' && '- '}
+              {price.format(t.price)}
+            </PriceHighlight>
+          </h3>
+          <TransactionsCardFooter>
+            <div>
+              <TagSimple size={16} />
+              <span>{t.category}</span>
+            </div>
+            <div>
+              <CalendarBlank size={16} />
+              <span>{date.format(new Date(t.createdAt))}</span>
+            </div>
+          </TransactionsCardFooter>
+        </div>
+      ))}
+    </TransactionsGrid>
   );
 }

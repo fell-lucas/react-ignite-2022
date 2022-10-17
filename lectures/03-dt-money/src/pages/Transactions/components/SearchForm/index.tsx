@@ -39,7 +39,7 @@ export function SearchForm() {
 
       <button disabled={isSubmitting} type="submit">
         <MagnifyingGlass size={20} />
-        {t('buscar')}
+        <span>{t('buscar')}</span>
       </button>
     </SearchFormContainer>
   );

@@ -25,6 +25,7 @@ specifiers:
   react-is: ^18.2.0
   react-router-dom: ^6.4.1
   react-use: ^17.4.0
+  react-use-draggable-scroll: ^0.4.7
   scheduler: ^0.23.0
   styled-components: ^5.3.5
   styled-media-query: ^2.1.2
@@ -51,6 +52,7 @@ dependencies:
   react-is: 18.2.0
   react-router-dom: 6.4.1_biqbaboplfbrettd7655fr4n2y
   react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
+  react-use-draggable-scroll: 0.4.7_react@18.2.0
   scheduler: 0.23.0
   styled-components: 5.3.5_7i5myeigehqah43i5u7wbekgba
   styled-media-query: 2.1.2_styled-components@5.3.5
@@ -3813,6 +3815,15 @@ packages:
     dependencies:
       react: 18.2.0
       tslib: 2.4.0
+    dev: false
+
+  /react-use-draggable-scroll/0.4.7_react@18.2.0:
+    resolution: {integrity: sha512-6gCxGPO9WV5dIsBaDrgUKBaac8CY07PkygcArfajijYSNDwAq0girDRjaBuF1+lRqQryoLFQfpVaV2u/Yh6CrQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-use/17.4.0_biqbaboplfbrettd7655fr4n2y:
